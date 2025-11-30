@@ -1,0 +1,283 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1e40af 0%, #0ea5e9 100%);
+  color: white;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Topics Section */
+.topicsSection {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+[data-theme='dark'] .topicsSection {
+  background-color: #1a1a1a;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 3rem;
+  text-align: center;
+  animation: slideInTop 0.6s ease-out;
+}
+
+.chapterCard {
+  margin-bottom: 2rem;
+}
+
+.cardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.card {
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  height: 100%;
+  background-color: white;
+  animation: bounceIn 0.6s ease-out;
+}
+
+[data-theme='dark'] .card {
+  background-color: #2d2d2d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(30, 64, 175, 0.2);
+  border-left: 4px solid #1e40af;
+}
+
+.cardIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1e40af;
+}
+
+[data-theme='dark'] .card h3 {
+  color: #60a5fa;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+[data-theme='dark'] .card p {
+  color: #ccc;
+}
+
+/* Quick Links Section */
+.quickLinksSection {
+  padding: 4rem 0;
+  background-color: white;
+}
+
+[data-theme='dark'] .quickLinksSection {
+  background-color: #0d0d0d;
+}
+
+.quickLink {
+  margin-bottom: 2rem;
+}
+
+.quickLink a {
+  display: block;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1e40af15 0%, #0ea5e915 100%);
+  border-radius: 10px;
+  border-left: 4px solid #1e40af;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  animation: slideInLeft 0.6s ease-out;
+}
+
+[data-theme='dark'] .quickLink a {
+  background: linear-gradient(135deg, #1e40af25 0%, #0ea5e925 100%);
+}
+
+.quickLink a:hover {
+  transform: translateX(8px);
+  box-shadow: 0 8px 16px rgba(30, 64, 175, 0.2);
+}
+
+.quickLink strong {
+  color: #1e40af;
+  font-size: 1.1rem;
+}
+
+[data-theme='dark'] .quickLink strong {
+  color: #60a5fa;
+}
+
+.quickLink p {
+  margin: 0.5rem 0 0 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+[data-theme='dark'] .quickLink p {
+  color: #999;
+}
+
+/* Robots Section */
+.robotsSection {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e8eef7 100%);
+}
+
+[data-theme='dark'] .robotsSection {
+  background: linear-gradient(135deg, #1a1a1a 0%, #1e2d3d 100%);
+}
+
+.robot {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  animation: fadeIn 0.8s ease-out;
+}
+
+[data-theme='dark'] .robot {
+  background-color: #2d2d2d;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.robot:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(30, 64, 175, 0.3);
+}
+
+.robot h3 {
+  color: #1e40af;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+[data-theme='dark'] .robot h3 {
+  color: #60a5fa;
+}
+
+.robot p {
+  color: #666;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+[data-theme='dark'] .robot p {
+  color: #ccc;
+}
+
+/* Animations */
+@keyframes slideInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media screen and (max-width: 996px) {
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .card,
+  .quickLink a,
+  .robot {
+    margin-bottom: 1.5rem;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .sectionTitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .card,
+  .robot {
+    padding: 1.5rem;
+  }
+
+  .cardIcon {
+    font-size: 2.5rem;
+  }
+}
+

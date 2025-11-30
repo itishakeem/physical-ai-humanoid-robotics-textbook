@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "SlashCommand(/sp.specify:*)",
+      "Bash(powershell.exe -Command:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
