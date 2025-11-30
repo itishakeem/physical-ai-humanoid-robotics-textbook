@@ -1,0 +1,316 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #1e40af;
+  --ifm-color-primary-dark: #1e3a8a;
+  --ifm-color-primary-darker: #1e3a8a;
+  --ifm-color-primary-darkest: #172554;
+  --ifm-color-primary-light: #3b82f6;
+  --ifm-color-primary-lighter: #60a5fa;
+  --ifm-color-primary-lightest: #93c5fd;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #3b82f6;
+  --ifm-color-primary-dark: #2563eb;
+  --ifm-color-primary-darker: #1d4ed8;
+  --ifm-color-primary-darkest: #1e40af;
+  --ifm-color-primary-light: #60a5fa;
+  --ifm-color-primary-lighter: #93c5fd;
+  --ifm-color-primary-lightest: #dbeafe;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* ==================== ANIMATIONS ==================== */
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide In From Left */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide In From Right */
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Slide In From Top */
+@keyframes slideInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bounce In */
+@keyframes bounceIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Glow Effect */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(30, 64, 175, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(30, 64, 175, 0.8);
+  }
+}
+
+/* Pulse */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* ==================== ANIMATION CLASSES ==================== */
+
+.docusaurus-mt-lg {
+  animation: slideInTop 0.6s ease-out;
+}
+
+main {
+  animation: fadeIn 0.8s ease-out;
+}
+
+.markdown h1 {
+  animation: slideInLeft 0.6s ease-out;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--ifm-color-primary);
+}
+
+.markdown h2 {
+  animation: slideInLeft 0.7s ease-out 0.1s both;
+  margin-top: 1.5rem;
+}
+
+.markdown h3 {
+  animation: slideInLeft 0.7s ease-out 0.2s both;
+}
+
+.markdown p {
+  animation: fadeIn 0.8s ease-out 0.2s both;
+  line-height: 1.8;
+}
+
+.markdown ul, .markdown ol {
+  animation: slideInLeft 0.8s ease-out 0.3s both;
+}
+
+.markdown li {
+  animation: fadeIn 0.8s ease-out 0.3s both;
+}
+
+.markdown code {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  animation: glow 2s ease-in-out infinite;
+}
+
+.markdown pre {
+  animation: bounceIn 0.6s ease-out;
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 8px;
+}
+
+.markdown img, .markdown svg {
+  animation: fadeIn 1s ease-out;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.markdown img:hover, .markdown svg:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+.markdown blockquote {
+  animation: slideInRight 0.6s ease-out;
+  border-left: 4px solid var(--ifm-color-primary);
+  background-color: rgba(30, 64, 175, 0.1);
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+.markdown table {
+  animation: fadeIn 0.8s ease-out;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.markdown table th {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.markdown table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown table tr:hover {
+  background-color: rgba(30, 64, 175, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+/* Sidebar animations */
+.sidebar-menu {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.sidebar__item {
+  animation: fadeIn 0.8s ease-out;
+  transition: all 0.3s ease;
+}
+
+.sidebar__item:hover {
+  padding-left: 0.5rem;
+  border-left: 3px solid var(--ifm-color-primary);
+}
+
+/* Navbar animations */
+.navbar {
+  animation: slideInTop 0.5s ease-out;
+}
+
+.navbar__item {
+  animation: fadeIn 0.8s ease-out;
+  transition: color 0.3s ease;
+}
+
+.navbar__item:hover {
+  color: var(--ifm-color-primary);
+}
+
+/* Button animations */
+button, a.button {
+  animation: fadeIn 0.8s ease-out;
+  transition: all 0.3s ease;
+}
+
+button:hover, a.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+
+/* Card animations */
+.card {
+  animation: bounceIn 0.6s ease-out;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+/* Footer animations */
+.footer {
+  animation: slideInTop 0.6s ease-out;
+}
+
+/* Code blocks with syntax highlighting */
+.docusaurus-highlight {
+  animation: fadeIn 0.8s ease-out;
+  border-radius: 8px;
+}
+
+/* Alert boxes */
+.admonition {
+  animation: slideInLeft 0.6s ease-out;
+  border-radius: 8px;
+  border-left: 4px solid;
+  padding: 1rem;
+}
+
+.admonition.admonition-note {
+  border-left-color: #2563eb;
+  background-color: rgba(37, 99, 235, 0.1);
+}
+
+.admonition.admonition-tip {
+  border-left-color: #16a34a;
+  background-color: rgba(22, 163, 74, 0.1);
+}
+
+.admonition.admonition-warning {
+  border-left-color: #ea580c;
+  background-color: rgba(234, 88, 12, 0.1);
+}
+
+.admonition.admonition-danger {
+  border-left-color: #dc2626;
+  background-color: rgba(220, 38, 38, 0.1);
+}
+
+/* Docusaurus specific animations */
+.navbar__brand {
+  animation: bounceIn 0.6s ease-out;
+}
+
+.breadcrumbs {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Responsive animations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
