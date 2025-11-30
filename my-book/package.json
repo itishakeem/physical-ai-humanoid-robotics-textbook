@@ -2,12 +2,14 @@
   "name": "my-book",
   "version": "0.0.0",
   "private": true,
+  "homepage": "https://itishakeem.github.io/physical-ai-humanoid-robotics-textbook/",
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
@@ -24,7 +26,8 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
-    "@docusaurus/types": "3.9.2"
+    "@docusaurus/types": "3.9.2",
+    "gh-pages": "^6.3.0"
   },
   "browserslist": {
     "production": [
