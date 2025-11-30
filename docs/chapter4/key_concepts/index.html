@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter4/key_concepts" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 4: Control Systems - Key Concepts | Physical AI &amp; Humanoid Robotics</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://physical-ai-robotics.example.com/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://physical-ai-robotics.example.com/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://physical-ai-robotics.example.com/docs/chapter4/key_concepts"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 4: Control Systems - Key Concepts | Physical AI &amp; Humanoid Robotics"><meta data-rh="true" name="description" content="Forward and Inverse Kinematics"><meta data-rh="true" property="og:description" content="Forward and Inverse Kinematics"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://physical-ai-robotics.example.com/docs/chapter4/key_concepts"><link data-rh="true" rel="alternate" href="https://physical-ai-robotics.example.com/docs/chapter4/key_concepts" hreflang="en"><link data-rh="true" rel="alternate" href="https://physical-ai-robotics.example.com/docs/chapter4/key_concepts" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 4: Control Systems - Key Concepts","item":"https://physical-ai-robotics.example.com/docs/chapter4/key_concepts"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Physical AI &amp; Humanoid Robotics RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Physical AI &amp; Humanoid Robotics Atom Feed"><link rel="stylesheet" href="/assets/css/styles.853efe8c.css">
+<script src="/assets/js/runtime~main.9fd6bbf2.js" defer="defer"></script>
+<script src="/assets/js/main.c38e4f54.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Robotics Textbook" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="Robotics Textbook" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Humanoid Robotics</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/intro">📚 Chapters</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">📖 Topics</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/chapter1/summary">Fundamentals of Physical AI</a></li><li><a class="dropdown__link" href="/docs/chapter2/summary">Humanoid Design Principles</a></li><li><a class="dropdown__link" href="/docs/chapter3/summary">Sensors &amp; Actuators</a></li><li><a class="dropdown__link" href="/docs/chapter4/summary">Control Systems</a></li><li><a class="dropdown__link" href="/docs/chapter5/summary">AI Integration</a></li><li><a class="dropdown__link" href="/docs/chapter6/summary">Motion &amp; Navigation</a></li></ul></div><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">🤖 Key Concepts</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/chapter1/key_concepts">Embodied Intelligence</a></li><li><a aria-current="page" class="dropdown__link dropdown__link--active" href="/docs/chapter4/key_concepts">Kinematics &amp; Dynamics</a></li><li><a class="dropdown__link" href="/docs/chapter5/key_concepts">Machine Learning</a></li><li><a class="dropdown__link" href="/docs/chapter6/key_concepts">Path Planning</a></li></ul></div><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">💡 Examples</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/chapter3/practical_examples">Practical Applications</a></li><li><a class="dropdown__link" href="/docs/chapter4/practical_examples">Control Examples</a></li><li><a class="dropdown__link" href="/docs/chapter5/practical_examples">Real-World Robots</a></li><li><a class="dropdown__link" href="/docs/chapter6/practical_examples">Navigation Systems</a></li></ul></div></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/itishakeem/physical-ai-humanoid-robotics-textbook" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">🔗 GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro"><span title="Physical AI &amp; Humanoid Robotics" class="linkLabel_WmDU">Physical AI &amp; Humanoid Robotics</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/chapter1/summary"><span title="Chapter 1: Fundamentals of Physical AI" class="categoryLinkLabel_W154">Chapter 1: Fundamentals of Physical AI</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/chapter2/summary"><span title="Chapter 2: Humanoid Robotics Design" class="categoryLinkLabel_W154">Chapter 2: Humanoid Robotics Design</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/chapter3/summary"><span title="Chapter 3: Sensors and Actuators" class="categoryLinkLabel_W154">Chapter 3: Sensors and Actuators</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/chapter4/summary"><span title="Chapter 4: Control Systems" class="categoryLinkLabel_W154">Chapter 4: Control Systems</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter4/summary"><span title="Chapter 4: Control Systems" class="linkLabel_WmDU">Chapter 4: Control Systems</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/chapter4/key_concepts"><span title="Chapter 4: Control Systems - Key Concepts" class="linkLabel_WmDU">Chapter 4: Control Systems - Key Concepts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter4/practical_examples"><span title="Chapter 4: Control Systems - Practical Examples" class="linkLabel_WmDU">Chapter 4: Control Systems - Practical Examples</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter4/diagrams"><span title="Chapter 4: Control Systems - Diagrams / Illustrations" class="linkLabel_WmDU">Chapter 4: Control Systems - Diagrams / Illustrations</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/chapter5/summary"><span title="Chapter 5: AI Integration" class="categoryLinkLabel_W154">Chapter 5: AI Integration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/chapter6/summary"><span title="Chapter 6: Motion and Navigation" class="categoryLinkLabel_W154">Chapter 6: Motion and Navigation</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Chapter 4: Control Systems</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 4: Control Systems - Key Concepts</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Chapter 4: Control Systems - Key Concepts</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="forward-and-inverse-kinematics">Forward and Inverse Kinematics<a href="#forward-and-inverse-kinematics" class="hash-link" aria-label="Direct link to Forward and Inverse Kinematics" title="Direct link to Forward and Inverse Kinematics" translate="no">​</a></h2>
+<p>Kinematics describes how joint angles relate to end-effector (hand/gripper) position without considering forces.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="forward-kinematics-fk">Forward Kinematics (FK)<a href="#forward-kinematics-fk" class="hash-link" aria-label="Direct link to Forward Kinematics (FK)" title="Direct link to Forward Kinematics (FK)" translate="no">​</a></h3>
+<p>Forward kinematics answers: <em>&quot;Given joint angles, where is the end-effector?&quot;</em></p>
+<p><strong>Process</strong>:</p>
+<ol>
+<li class="">Start at base with known position (0, 0, 0)</li>
+<li class="">Apply rotation/translation for each joint sequentially</li>
+<li class="">Compute final position of end-effector</li>
+</ol>
+<p><strong>Mathematical Representation</strong> (Denavit-Hartenberg Parameters):</p>
+<ul>
+<li class="">Link 1: length L₁, joint angle θ₁</li>
+<li class="">Link 2: length L₂, joint angle θ₂</li>
+<li class="">End-effector position: x = L₁·cos(θ₁) + L₂·cos(θ₁+θ₂)
+y = L₁·sin(θ₁) + L₂·sin(θ₁+θ₂)</li>
+</ul>
+<p><strong>Complexity</strong>: Straightforward calculation; linear in number of joints.</p>
+<p><strong>Application</strong>: Real-time position feedback; know where hand is during movement.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="inverse-kinematics-ik">Inverse Kinematics (IK)<a href="#inverse-kinematics-ik" class="hash-link" aria-label="Direct link to Inverse Kinematics (IK)" title="Direct link to Inverse Kinematics (IK)" translate="no">​</a></h3>
+<p>Inverse kinematics answers: <em>&quot;What joint angles achieve this hand position?&quot;</em></p>
+<p><strong>Problem</strong>: Given desired (x, y), find (θ₁, θ₂, ..., θₙ)</p>
+<p><strong>Challenge</strong>: Multiple solutions often exist (robot arm can reach same point different ways). For humanoids with &gt;7 DoF, infinite solutions exist.</p>
+<p><strong>Methods</strong>:</p>
+<ol>
+<li class="">
+<p><strong>Analytical Solution</strong>: Solve algebraic equations</p>
+<ul>
+<li class="">Fast but only works for relatively simple arm structures</li>
+<li class="">Example: 2-link arm has closed-form solution</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Numerical Solution</strong>: Iteratively adjust joint angles to minimize error</p>
+<ul>
+<li class=""><strong>Jacobian Method</strong>: Uses partial derivatives to guide adjustment direction</li>
+<li class="">Formula: Δθ = J⁻¹ · Δx (where J is the Jacobian matrix)</li>
+<li class="">Computation time: 10-50 ms per solve</li>
+<li class="">Works for high-DoF systems</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Learning-Based</strong>: Train neural network to predict joint angles</p>
+<ul>
+<li class="">Very fast inference once trained</li>
+<li class="">Can find optimal solution (e.g., most efficient path)</li>
+<li class="">Requires training data</li>
+</ul>
+</li>
+</ol>
+<p><strong>Real-World Example</strong>: 7-DOF humanoid arm reaching toward object at (1.5m, 0.5m, 1.2m)</p>
+<ul>
+<li class="">Multiple joint configurations can achieve this position</li>
+<li class="">Control system selects configuration that:<!-- -->
+<ul>
+<li class="">Avoids singularities (where Jacobian is non-invertible)</li>
+<li class="">Minimizes energy consumption</li>
+<li class="">Avoids obstacles</li>
+<li class="">Maintains stability of body</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="dynamics-forces-masses-and-accelerations">Dynamics: Forces, Masses, and Accelerations<a href="#dynamics-forces-masses-and-accelerations" class="hash-link" aria-label="Direct link to Dynamics: Forces, Masses, and Accelerations" title="Direct link to Dynamics: Forces, Masses, and Accelerations" translate="no">​</a></h2>
+<p>While kinematics ignores forces, dynamics describes how forces affect motion.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="newtons-laws-applied-to-robots">Newton&#x27;s Laws Applied to Robots<a href="#newtons-laws-applied-to-robots" class="hash-link" aria-label="Direct link to Newton&#x27;s Laws Applied to Robots" title="Direct link to Newton&#x27;s Laws Applied to Robots" translate="no">​</a></h3>
+<p><strong>Equation of Motion</strong> (Lagrangian Mechanics):</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">τ = M(θ)·α + C(θ,ω)·ω + G(θ)</span><br></span></code></pre></div></div>
+<p>Where:</p>
+<ul>
+<li class=""><strong>τ</strong> = applied torques (motor commands)</li>
+<li class=""><strong>M(θ)</strong> = mass matrix (depends on configuration)</li>
+<li class=""><strong>α</strong> = joint accelerations (what we want to command)</li>
+<li class=""><strong>C(θ,ω)·ω</strong> = Coriolis and centrifugal forces</li>
+<li class=""><strong>G(θ)</strong> = gravity effects</li>
+</ul>
+<p><strong>Intuition</strong>:</p>
+<ul>
+<li class="">M·α is inertia (heavier limbs = more torque needed to accelerate)</li>
+<li class="">C·ω is centrifugal force (spinning faster = harder to control)</li>
+<li class="">G is gravity (holding arm overhead = constant torque load)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="mass-matrix-example-single-pendulum-humanoid-leg-swing">Mass Matrix Example: Single Pendulum (Humanoid Leg Swing)<a href="#mass-matrix-example-single-pendulum-humanoid-leg-swing" class="hash-link" aria-label="Direct link to Mass Matrix Example: Single Pendulum (Humanoid Leg Swing)" title="Direct link to Mass Matrix Example: Single Pendulum (Humanoid Leg Swing)" translate="no">​</a></h3>
+<p>For a single joint with mass m at distance L:</p>
+<ul>
+<li class="">M = m·L² (moment of inertia)</li>
+<li class="">C·ω = 0 (single joint, no Coriolis)</li>
+<li class="">G = m·g·L·cos(θ) (gravity component)</li>
+</ul>
+<p>Command torque: τ = m·L²·α + m·g·L·cos(θ)</p>
+<p><strong>Implication</strong>: As leg swings down (θ increases), gravity helps more, reducing required motor torque. Control must account for this.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="linearization">Linearization<a href="#linearization" class="hash-link" aria-label="Direct link to Linearization" title="Direct link to Linearization" translate="no">​</a></h3>
+<p>Nonlinear dynamics are computationally expensive. Control often uses <strong>linearization</strong>:</p>
+<p>Around nominal trajectory, approximate:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Δτ = M·Δα + C·Δω + K_p·Δθ + K_d·Δω</span><br></span></code></pre></div></div>
+<p>This becomes linear and solvable in real-time (&lt;1 ms per solve).</p>
+<p><strong>Limitation</strong>: Only valid near nominal trajectory; large deviations require relinearization.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="feedback-control-pid-and-beyond">Feedback Control: PID and Beyond<a href="#feedback-control-pid-and-beyond" class="hash-link" aria-label="Direct link to Feedback Control: PID and Beyond" title="Direct link to Feedback Control: PID and Beyond" translate="no">​</a></h2>
+<p>Feedback control adjusts actuator commands based on sensor feedback to minimize error.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="proportional-integral-derivative-pid-control">Proportional-Integral-Derivative (PID) Control<a href="#proportional-integral-derivative-pid-control" class="hash-link" aria-label="Direct link to Proportional-Integral-Derivative (PID) Control" title="Direct link to Proportional-Integral-Derivative (PID) Control" translate="no">​</a></h3>
+<p>The most widely used feedback controller:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">u(t) = Kp·e(t) + Ki·∫e(t)dt + Kd·de/dt</span><br></span></code></pre></div></div>
+<p>Where:</p>
+<ul>
+<li class=""><strong>e(t)</strong> = error (target - actual)</li>
+<li class=""><strong>Kp</strong> = proportional gain</li>
+<li class=""><strong>Ki</strong> = integral gain</li>
+<li class=""><strong>Kd</strong> = derivative gain</li>
+<li class=""><strong>u(t)</strong> = control output (motor command)</li>
+</ul>
+<p><strong>Components</strong>:</p>
+<ol>
+<li class="">
+<p><strong>Proportional (Kp·e)</strong>:</p>
+<ul>
+<li class="">Error = 10°? Output = 10·Kp (proportional response)</li>
+<li class="">Provides direct corrective action</li>
+<li class="">Too high → oscillation; too low → slow response</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Integral (Ki·∫e)</strong>:</p>
+<ul>
+<li class="">Accumulates error over time</li>
+<li class="">Eliminates steady-state error</li>
+<li class="">Responds to persistent errors (e.g., friction loading)</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Derivative (Kd·de/dt)</strong>:</p>
+<ul>
+<li class="">Responds to rate of error change</li>
+<li class="">Provides damping to prevent overshoot</li>
+<li class="">Stabilizes system, prevents oscillation</li>
+</ul>
+</li>
+</ol>
+<p><strong>PID Tuning</strong> (trial-and-error process):</p>
+<ul>
+<li class="">Start with Kp and Kd, adjust for stable response</li>
+<li class="">Add Ki to eliminate steady-state error</li>
+<li class="">Too much Ki → sluggish response</li>
+<li class="">Too much Kd → noise amplification</li>
+</ul>
+<p><strong>Real Example</strong>: Joint encoder reads 25°, target is 30° (error = 5°)</p>
+<ul>
+<li class="">Proportional output: 5·Kp (if Kp=5 → output=25)</li>
+<li class="">Derivative output: -10·Kd (error decreasing at 10°/s → negative correction)</li>
+<li class="">Integral output: accumulated over 100 ms = 10·Ki</li>
+<li class="">Total: u = 25 - 10·Kd + 10·Ki (usually Ki is small)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="state-feedback-control">State Feedback Control<a href="#state-feedback-control" class="hash-link" aria-label="Direct link to State Feedback Control" title="Direct link to State Feedback Control" translate="no">​</a></h3>
+<p>More sophisticated than PID, uses full state (not just position error):</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">u(t) = -K·x(t)</span><br></span></code></pre></div></div>
+<p>Where:</p>
+<ul>
+<li class=""><strong>x(t)</strong> = state vector [position, velocity, acceleration, ...]</li>
+<li class=""><strong>K</strong> = feedback gain matrix</li>
+<li class=""><strong>u(t)</strong> = control output</li>
+</ul>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li class="">Theoretically optimal for linear systems (Linear Quadratic Regulator - LQR)</li>
+<li class="">Handles multiple inputs and outputs naturally</li>
+<li class="">Can be tuned for specific performance objectives</li>
+</ul>
+<p><strong>Computational Cost</strong>: Slightly higher than PID but still real-time feasible (~5 ms)</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="whole-body-control-wbc">Whole-Body Control (WBC)<a href="#whole-body-control-wbc" class="hash-link" aria-label="Direct link to Whole-Body Control (WBC)" title="Direct link to Whole-Body Control (WBC)" translate="no">​</a></h2>
+<p>Humanoids have 30-60 degrees of freedom; controlling each joint independently is insufficient. Whole-body control coordinates all joints toward high-level objectives.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="hierarchical-control-architecture">Hierarchical Control Architecture<a href="#hierarchical-control-architecture" class="hash-link" aria-label="Direct link to Hierarchical Control Architecture" title="Direct link to Hierarchical Control Architecture" translate="no">​</a></h3>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Level 3: High-Level Behavior</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         &quot;Walk forward 5 meters&quot; (10 Hz)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">              ↓</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Level 2: Task Specification</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         &quot;Place left foot at (1.0m, 0.2m)&quot; (100 Hz)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">              ↓</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Level 1: Joint Coordination</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         Solve inverse kinematics → joint angles (100 Hz)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">              ↓</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Level 0: Joint-Level Control</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">         Apply PID control to each joint (1000 Hz)</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="formulation-quadratic-programming">Formulation: Quadratic Programming<a href="#formulation-quadratic-programming" class="hash-link" aria-label="Direct link to Formulation: Quadratic Programming" title="Direct link to Formulation: Quadratic Programming" translate="no">​</a></h3>
+<p>WBC solves an optimization problem at each control cycle:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Minimize:   ||a - a_desired||²    (achieve desired accelerations)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">Subject to: </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  - Dynamics constraints (physics must be obeyed)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  - Friction cone constraints (foot cannot slip)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  - Joint limits (joints cannot exceed max angle)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  - Torque limits (motors have max output)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  - Balance constraint (ZMP must stay within support)</span><br></span></code></pre></div></div>
+<p><strong>Solver</strong>: Quadratic Programming (QP) solver computes joint torques in 5-20 ms.</p>
+<p><strong>Example Scenario</strong>: Atlas walking while reaching</p>
+<ul>
+<li class="">Left leg: Must maintain balance and generate forward motion</li>
+<li class="">Right leg: Placement for next step</li>
+<li class="">Left arm: Reaching toward object</li>
+<li class="">Right arm: Balancing body pose</li>
+</ul>
+<p>WBC automatically distributes torques across all joints to:</p>
+<ol>
+<li class="">Maintain balance (top priority)</li>
+<li class="">Complete reaching motion (secondary)</li>
+<li class="">Prepare next step (tertiary)</li>
+</ol>
+<p>If reaching would cause imbalance, WBC automatically reduces reach amplitude.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="stability-analysis-lyapunov-functions">Stability Analysis: Lyapunov Functions<a href="#stability-analysis-lyapunov-functions" class="hash-link" aria-label="Direct link to Stability Analysis: Lyapunov Functions" title="Direct link to Stability Analysis: Lyapunov Functions" translate="no">​</a></h2>
+<p>How do we verify a control system is stable?</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="lyapunov-stability">Lyapunov Stability<a href="#lyapunov-stability" class="hash-link" aria-label="Direct link to Lyapunov Stability" title="Direct link to Lyapunov Stability" translate="no">​</a></h3>
+<p>A system is stable if the <strong>Lyapunov function</strong> (usually energy) decreases over time:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">V(x) = 0 at equilibrium</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">V(x) &gt; 0 elsewhere</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">dV/dt &lt; 0 (always decreasing)</span><br></span></code></pre></div></div>
+<p><strong>Intuition</strong>: If system energy continuously decreases, it must eventually settle to equilibrium.</p>
+<p><strong>Example: Pendulum</strong></p>
+<ul>
+<li class="">Equilibrium: hanging down (θ = 0)</li>
+<li class="">Energy: V = (1/2)·m·L²·ω² + m·g·L·(1 - cos(θ))</li>
+<li class="">With friction, energy always decreases → pendulum will come to rest</li>
+</ul>
+<p><strong>Application to Humanoids</strong>:</p>
+<ul>
+<li class="">Verify walking gaits won&#x27;t diverge</li>
+<li class="">Prove balance controller will stabilize robot</li>
+<li class="">Design controllers with guaranteed stability</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="region-of-attraction">Region of Attraction<a href="#region-of-attraction" class="hash-link" aria-label="Direct link to Region of Attraction" title="Direct link to Region of Attraction" translate="no">​</a></h3>
+<p>Real systems have constraints (joint limits, friction, etc.). The <strong>region of attraction</strong> is the range of states from which the system can stabilize:</p>
+<ul>
+<li class="">Large region → robust controller (works from many initial states)</li>
+<li class="">Small region → fragile controller (must start near nominal condition)</li>
+</ul>
+<p>Humanoid walking is particularly sensitive; if robot tips too far off-balance, even optimal control cannot prevent a fall.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="real-time-constraints-and-computational-complexity">Real-Time Constraints and Computational Complexity<a href="#real-time-constraints-and-computational-complexity" class="hash-link" aria-label="Direct link to Real-Time Constraints and Computational Complexity" title="Direct link to Real-Time Constraints and Computational Complexity" translate="no">​</a></h2>
+<p>Robot control must meet strict real-time deadlines:</p>
+<table><thead><tr><th>Control Level</th><th>Frequency</th><th>Time Budget</th><th>Algorithm</th></tr></thead><tbody><tr><td>Joint Motor</td><td>1000 Hz</td><td>1 ms</td><td>PID (simple, fast)</td></tr><tr><td>Joint Coordination</td><td>100 Hz</td><td>10 ms</td><td>Inverse kinematics + dynamics</td></tr><tr><td>Task Planning</td><td>100 Hz</td><td>10 ms</td><td>Force control, gait phase updates</td></tr><tr><td>Behavior Planning</td><td>10 Hz</td><td>100 ms</td><td>Path planning, decision making</td></tr></tbody></table>
+<p><strong>Miss Deadline = System Failure</strong>:</p>
+<ul>
+<li class="">Miss 1 ms deadline at 1000 Hz: Joint spirals into oscillation</li>
+<li class="">Miss 10 ms deadline at 100 Hz: Unstable motion, possible fall</li>
+<li class="">Miss 100 ms deadline at 10 Hz: Delayed response to environment changes</li>
+</ul>
+<p><strong>Mitigation Strategies</strong>:</p>
+<ul>
+<li class="">Dedicated real-time OS (e.g., Linux with PREEMPT_RT) guarantees deterministic scheduling</li>
+<li class="">Separate threads for each control level with priority inheritance</li>
+<li class="">Fallback behaviors (if task planning misses deadline, use previous plan)</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="model-predictive-control-mpc">Model Predictive Control (MPC)<a href="#model-predictive-control-mpc" class="hash-link" aria-label="Direct link to Model Predictive Control (MPC)" title="Direct link to Model Predictive Control (MPC)" translate="no">​</a></h2>
+<p>Advanced technique that optimizes control over future time horizon:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">At each timestep t:</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  1. Predict robot state for next 10 steps (100 ms horizon)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  2. Simulate candidate control sequences</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  3. Optimize sequence to minimize cost function</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  4. Execute first step of optimal sequence</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  5. Repeat (receding horizon)</span><br></span></code></pre></div></div>
+<p><strong>Advantages</strong>:</p>
+<ul>
+<li class="">Naturally handles constraints (foot placement limits, etc.)</li>
+<li class="">Multi-objective optimization (balance + reaching + efficiency)</li>
+<li class="">Anticipatory (robot plans ahead rather than reacting)</li>
+</ul>
+<p><strong>Disadvantage</strong>: Computationally expensive (requires simulating 10-20 scenarios per cycle)</p>
+<p><strong>Application</strong>: Boston Dynamics Atlas uses MPC-like planning for complex locomotion.</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapter4/key_concepts.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/chapter4/summary"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 4: Control Systems</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/chapter4/practical_examples"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 4: Control Systems - Practical Examples</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#forward-and-inverse-kinematics" class="table-of-contents__link toc-highlight">Forward and Inverse Kinematics</a><ul><li><a href="#forward-kinematics-fk" class="table-of-contents__link toc-highlight">Forward Kinematics (FK)</a></li><li><a href="#inverse-kinematics-ik" class="table-of-contents__link toc-highlight">Inverse Kinematics (IK)</a></li></ul></li><li><a href="#dynamics-forces-masses-and-accelerations" class="table-of-contents__link toc-highlight">Dynamics: Forces, Masses, and Accelerations</a><ul><li><a href="#newtons-laws-applied-to-robots" class="table-of-contents__link toc-highlight">Newton&#39;s Laws Applied to Robots</a></li><li><a href="#mass-matrix-example-single-pendulum-humanoid-leg-swing" class="table-of-contents__link toc-highlight">Mass Matrix Example: Single Pendulum (Humanoid Leg Swing)</a></li><li><a href="#linearization" class="table-of-contents__link toc-highlight">Linearization</a></li></ul></li><li><a href="#feedback-control-pid-and-beyond" class="table-of-contents__link toc-highlight">Feedback Control: PID and Beyond</a><ul><li><a href="#proportional-integral-derivative-pid-control" class="table-of-contents__link toc-highlight">Proportional-Integral-Derivative (PID) Control</a></li><li><a href="#state-feedback-control" class="table-of-contents__link toc-highlight">State Feedback Control</a></li></ul></li><li><a href="#whole-body-control-wbc" class="table-of-contents__link toc-highlight">Whole-Body Control (WBC)</a><ul><li><a href="#hierarchical-control-architecture" class="table-of-contents__link toc-highlight">Hierarchical Control Architecture</a></li><li><a href="#formulation-quadratic-programming" class="table-of-contents__link toc-highlight">Formulation: Quadratic Programming</a></li></ul></li><li><a href="#stability-analysis-lyapunov-functions" class="table-of-contents__link toc-highlight">Stability Analysis: Lyapunov Functions</a><ul><li><a href="#lyapunov-stability" class="table-of-contents__link toc-highlight">Lyapunov Stability</a></li><li><a href="#region-of-attraction" class="table-of-contents__link toc-highlight">Region of Attraction</a></li></ul></li><li><a href="#real-time-constraints-and-computational-complexity" class="table-of-contents__link toc-highlight">Real-Time Constraints and Computational Complexity</a></li><li><a href="#model-predictive-control-mpc" class="table-of-contents__link toc-highlight">Model Predictive Control (MPC)</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">📚 All Chapters</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/chapter1/summary">Chapter 1: Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter2/summary">Chapter 2: Humanoid Design</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter3/summary">Chapter 3: Sensors &amp; Actuators</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter4/summary">Chapter 4: Control Systems</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter5/summary">Chapter 5: AI Integration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter6/summary">Chapter 6: Motion &amp; Navigation</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">🎓 Learning Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/chapter1/key_concepts">Key Concepts</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter3/practical_examples">Practical Examples</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter3/diagrams">Diagrams &amp; Visualizations</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">🚀 Community &amp; Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/itishakeem/physical-ai-humanoid-robotics-textbook" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub Repository<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/itishakeem/physical-ai-humanoid-robotics-textbook/issues" target="_blank" rel="noopener noreferrer" class="footer__link-item">Report Issues<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/itishakeem/physical-ai-humanoid-robotics-textbook/pulls" target="_blank" rel="noopener noreferrer" class="footer__link-item">Contribute<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">✍️ About</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Author: Abdul Hakeem</a></li><li class="footer__item"><a href="#" class="footer__link-item">Physical AI Research</a></li><li class="footer__item"><a href="#" class="footer__link-item">Embodied Intelligence</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright"><strong>Copyright © 2025 Abdul Hakeem</strong> | All rights reserved | Built with <span style="color: #ff6b6b;">❤️</span> using Docusaurus | <a href="https://github.com/itishakeem/physical-ai-humanoid-robotics-textbook" target="_blank">View on GitHub</a></div></div></div></footer></div>
+</body>
+</html>

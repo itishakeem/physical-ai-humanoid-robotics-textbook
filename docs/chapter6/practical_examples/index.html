@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapter6/practical_examples" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 6: Motion and Navigation - Practical Examples | Physical AI &amp; Humanoid Robotics</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://physical-ai-robotics.example.com/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://physical-ai-robotics.example.com/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://physical-ai-robotics.example.com/docs/chapter6/practical_examples"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 6: Motion and Navigation - Practical Examples | Physical AI &amp; Humanoid Robotics"><meta data-rh="true" name="description" content="Boston Dynamics Atlas: Parkour on Uneven Terrain"><meta data-rh="true" property="og:description" content="Boston Dynamics Atlas: Parkour on Uneven Terrain"><link data-rh="true" rel="icon" href="/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://physical-ai-robotics.example.com/docs/chapter6/practical_examples"><link data-rh="true" rel="alternate" href="https://physical-ai-robotics.example.com/docs/chapter6/practical_examples" hreflang="en"><link data-rh="true" rel="alternate" href="https://physical-ai-robotics.example.com/docs/chapter6/practical_examples" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Chapter 6: Motion and Navigation - Practical Examples","item":"https://physical-ai-robotics.example.com/docs/chapter6/practical_examples"}]}</script><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Physical AI &amp; Humanoid Robotics RSS Feed">
+<link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Physical AI &amp; Humanoid Robotics Atom Feed"><link rel="stylesheet" href="/assets/css/styles.853efe8c.css">
+<script src="/assets/js/runtime~main.9fd6bbf2.js" defer="defer"></script>
+<script src="/assets/js/main.c38e4f54.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/img/logo.svg"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Robotics Textbook" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/img/logo.svg" alt="Robotics Textbook" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Humanoid Robotics</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/intro">📚 Chapters</a><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">📖 Topics</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/chapter1/summary">Fundamentals of Physical AI</a></li><li><a class="dropdown__link" href="/docs/chapter2/summary">Humanoid Design Principles</a></li><li><a class="dropdown__link" href="/docs/chapter3/summary">Sensors &amp; Actuators</a></li><li><a class="dropdown__link" href="/docs/chapter4/summary">Control Systems</a></li><li><a class="dropdown__link" href="/docs/chapter5/summary">AI Integration</a></li><li><a class="dropdown__link" href="/docs/chapter6/summary">Motion &amp; Navigation</a></li></ul></div><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">🤖 Key Concepts</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/chapter1/key_concepts">Embodied Intelligence</a></li><li><a class="dropdown__link" href="/docs/chapter4/key_concepts">Kinematics &amp; Dynamics</a></li><li><a class="dropdown__link" href="/docs/chapter5/key_concepts">Machine Learning</a></li><li><a class="dropdown__link" href="/docs/chapter6/key_concepts">Path Planning</a></li></ul></div><div class="navbar__item dropdown dropdown--hoverable"><a href="#" aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link">💡 Examples</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/chapter3/practical_examples">Practical Applications</a></li><li><a class="dropdown__link" href="/docs/chapter4/practical_examples">Control Examples</a></li><li><a class="dropdown__link" href="/docs/chapter5/practical_examples">Real-World Robots</a></li><li><a aria-current="page" class="dropdown__link dropdown__link--active" href="/docs/chapter6/practical_examples">Navigation Systems</a></li></ul></div></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/itishakeem/physical-ai-humanoid-robotics-textbook" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">🔗 GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/intro"><span title="Physical AI &amp; Humanoid Robotics" class="linkLabel_WmDU">Physical AI &amp; Humanoid Robotics</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/chapter1/summary"><span title="Chapter 1: Fundamentals of Physical AI" class="categoryLinkLabel_W154">Chapter 1: Fundamentals of Physical AI</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/chapter2/summary"><span title="Chapter 2: Humanoid Robotics Design" class="categoryLinkLabel_W154">Chapter 2: Humanoid Robotics Design</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/chapter3/summary"><span title="Chapter 3: Sensors and Actuators" class="categoryLinkLabel_W154">Chapter 3: Sensors and Actuators</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/chapter4/summary"><span title="Chapter 4: Control Systems" class="categoryLinkLabel_W154">Chapter 4: Control Systems</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/chapter5/summary"><span title="Chapter 5: AI Integration" class="categoryLinkLabel_W154">Chapter 5: AI Integration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/chapter6/summary"><span title="Chapter 6: Motion and Navigation" class="categoryLinkLabel_W154">Chapter 6: Motion and Navigation</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter6/summary"><span title="Chapter 6: Motion and Navigation" class="linkLabel_WmDU">Chapter 6: Motion and Navigation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter6/key_concepts"><span title="Chapter 6: Motion and Navigation - Key Concepts" class="linkLabel_WmDU">Chapter 6: Motion and Navigation - Key Concepts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/chapter6/practical_examples"><span title="Chapter 6: Motion and Navigation - Practical Examples" class="linkLabel_WmDU">Chapter 6: Motion and Navigation - Practical Examples</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/chapter6/diagrams"><span title="Chapter 6: Motion and Navigation - Diagrams / Illustrations" class="linkLabel_WmDU">Chapter 6: Motion and Navigation - Diagrams / Illustrations</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Chapter 6: Motion and Navigation</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 6: Motion and Navigation - Practical Examples</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Chapter 6: Motion and Navigation - Practical Examples</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="boston-dynamics-atlas-parkour-on-uneven-terrain">Boston Dynamics Atlas: Parkour on Uneven Terrain<a href="#boston-dynamics-atlas-parkour-on-uneven-terrain" class="hash-link" aria-label="Direct link to Boston Dynamics Atlas: Parkour on Uneven Terrain" title="Direct link to Boston Dynamics Atlas: Parkour on Uneven Terrain" translate="no">​</a></h2>
+<p>Boston Dynamics demonstrated remarkable navigation and motion capabilities through their parkour videos.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="environment">Environment<a href="#environment" class="hash-link" aria-label="Direct link to Environment" title="Direct link to Environment" translate="no">​</a></h3>
+<p><strong>Course Design</strong>:</p>
+<ul>
+<li class="">Multiple platforms at different heights (0.5-1.5 meters)</li>
+<li class="">Large gaps requiring jumps (1-2 meters)</li>
+<li class="">Slopes and irregular terrain</li>
+<li class="">Obstacles requiring climbing and vaulting</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="navigation-strategy">Navigation Strategy<a href="#navigation-strategy" class="hash-link" aria-label="Direct link to Navigation Strategy" title="Direct link to Navigation Strategy" translate="no">​</a></h3>
+<p><strong>High-Level Planning</strong>:</p>
+<ol>
+<li class="">Human defines course visually</li>
+<li class="">Computer vision identifies key waypoints (obstacles, platforms)</li>
+<li class="">Path planning generates sequence of actions:<!-- -->
+<ul>
+<li class="">&quot;Jump to platform 1&quot;</li>
+<li class="">&quot;Walk across platform 2&quot;</li>
+<li class="">&quot;Vault over rail&quot;</li>
+<li class="">&quot;Jump to platform 3&quot;</li>
+</ul>
+</li>
+</ol>
+<p><strong>Per-Action Planning</strong> (for each maneuver):</p>
+<ol>
+<li class="">Identify approach vector</li>
+<li class="">Compute required velocity before maneuver</li>
+<li class="">Plan foot placement for maximum stability</li>
+<li class="">Generate smooth trajectory</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="motion-execution">Motion Execution<a href="#motion-execution" class="hash-link" aria-label="Direct link to Motion Execution" title="Direct link to Motion Execution" translate="no">​</a></h3>
+<p><strong>Example: Jumping 1.5-meter gap</strong></p>
+<p><strong>Phase 1: Approach</strong> (1-2 seconds)</p>
+<ul>
+<li class="">Walk toward platform edge at optimal speed</li>
+<li class="">Monitor distance to edge (LiDAR measurement)</li>
+<li class="">Time acceleration and deceleration for precise speed at edge</li>
+</ul>
+<p><strong>Phase 2: Takeoff</strong> (0.2 seconds)</p>
+<ul>
+<li class="">Both legs compress (squat position)</li>
+<li class="">Explosive leg extension generating upward velocity</li>
+<li class="">Required velocity: 3.5 m/s upward (from physics calculation)</li>
+<li class="">Force required: ~2× body weight</li>
+<li class="">Power peak: 5000 W (brief burst)</li>
+</ul>
+<p><strong>Phase 3: Flight</strong> (0.5 seconds)</p>
+<ul>
+<li class="">No leg control (airborne)</li>
+<li class="">Body rotates to prepare for landing</li>
+<li class="">Monitor trajectory relative to target platform</li>
+<li class="">Arm motions provide stabilization</li>
+</ul>
+<p><strong>Phase 4: Landing</strong> (0.1 seconds)</p>
+<ul>
+<li class="">Feet approach landing platform</li>
+<li class="">Legs bend (cushion impact)</li>
+<li class="">Force sensors detect contact</li>
+<li class="">Distribute impact across both legs</li>
+</ul>
+<p><strong>Phase 5: Stabilization</strong> (0.5 seconds)</p>
+<ul>
+<li class="">Regain balance on new platform</li>
+<li class="">Internal forces redistribute</li>
+<li class="">Return to walking stance</li>
+</ul>
+<p><strong>Total time</strong>: ~2.3 seconds per jump
+<strong>Energy</strong>: ~1000 J per jump (significant energy consumption)
+<strong>Success rate</strong>: 95%+ after training</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="key-technical-achievements">Key Technical Achievements<a href="#key-technical-achievements" class="hash-link" aria-label="Direct link to Key Technical Achievements" title="Direct link to Key Technical Achievements" translate="no">​</a></h3>
+<p><strong>Real-time Perception</strong>: Vision system processes 100+ visual features per second to estimate terrain</p>
+<p><strong>Dynamic Balance</strong>: ZMP control maintains balance on unstable platforms (&lt;5 cm margin)</p>
+<p><strong>Adaptive Locomotion</strong>: Changes walking gait based on terrain slope and surface friction</p>
+<p><strong>Predictive Planning</strong>: Anticipates landing position and adjusts mid-air if needed</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="fetch-robotics-autonomous-warehouse-navigation">Fetch Robotics Autonomous Warehouse Navigation<a href="#fetch-robotics-autonomous-warehouse-navigation" class="hash-link" aria-label="Direct link to Fetch Robotics Autonomous Warehouse Navigation" title="Direct link to Fetch Robotics Autonomous Warehouse Navigation" translate="no">​</a></h2>
+<p>Fetch robots demonstrate practical autonomous navigation at scale.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="warehouse-environment">Warehouse Environment<a href="#warehouse-environment" class="hash-link" aria-label="Direct link to Warehouse Environment" title="Direct link to Warehouse Environment" translate="no">​</a></h3>
+<p><strong>Challenge</strong>: Large-scale (1000+ m²), dynamic (humans working), varied terrain</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="slam-for-warehouse-mapping">SLAM for Warehouse Mapping<a href="#slam-for-warehouse-mapping" class="hash-link" aria-label="Direct link to SLAM for Warehouse Mapping" title="Direct link to SLAM for Warehouse Mapping" translate="no">​</a></h3>
+<p><strong>Mapping Phase</strong> (first deployment):</p>
+<ol>
+<li class="">Human operates robot manually, drives through warehouse</li>
+<li class="">LiDAR scans continuously (10 Hz)</li>
+<li class="">Robot builds map in real-time</li>
+<li class="">ICP algorithm matches consecutive scans</li>
+<li class="">Loop closure detection: When robot revisits area, corrects drift</li>
+</ol>
+<p><strong>Result</strong>:</p>
+<ul>
+<li class="">Warehouse map: 50,000+ 3D LiDAR points</li>
+<li class="">Map accuracy: ±0.2 meters (sufficient for navigation)</li>
+<li class="">Mapping time: 1-2 hours for typical warehouse</li>
+<li class="">Map size: ~50 MB (easily stored)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="autonomous-navigation">Autonomous Navigation<a href="#autonomous-navigation" class="hash-link" aria-label="Direct link to Autonomous Navigation" title="Direct link to Autonomous Navigation" translate="no">​</a></h3>
+<p><strong>Task</strong>: &quot;Deliver package from packing station A to shipping dock B&quot;</p>
+<p><strong>Planning</strong> (100 Hz):</p>
+<ul>
+<li class="">Localize robot: Match current LiDAR scan to map</li>
+<li class="">Position error: Typically &lt;0.1 m</li>
+<li class="">Path planning: Compute collision-free route</li>
+<li class="">Route: A → Corridor 1 → Intersection 1 → Corridor 2 → B</li>
+<li class="">Planning time: &lt;50 ms</li>
+</ul>
+<p><strong>Execution</strong> (10 Hz):</p>
+<ul>
+<li class="">Command wheel velocities (mobile base control)</li>
+<li class="">Monitor LiDAR for obstacles</li>
+<li class="">If obstacle detected: Replan locally (D* Lite)</li>
+<li class="">Feedback from odometry (wheel encoders)</li>
+</ul>
+<p><strong>Obstacle Avoidance</strong> (50 Hz):</p>
+<ul>
+<li class="">Dynamic Window Approach</li>
+<li class="">Consider 200 candidate motions</li>
+<li class="">Rank by safety and goal progress</li>
+<li class="">Execute best motion</li>
+<li class="">Adapt to moving humans</li>
+</ul>
+<p><strong>Example Scenario</strong>: Narrow corridor, human walking toward robot</p>
+<ol>
+<li class="">Robots 2 meters apart, moving toward collision</li>
+<li class="">Robot A detects human at 1 meter distance</li>
+<li class="">Computes: Can stop in time? Yes (1m, deceleration 0.5 m/s²)</li>
+<li class="">Selects: Decelerate (safer than swerving in narrow space)</li>
+<li class="">Human passes without collision</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="performance-metrics">Performance Metrics<a href="#performance-metrics" class="hash-link" aria-label="Direct link to Performance Metrics" title="Direct link to Performance Metrics" translate="no">​</a></h3>
+<p><strong>Navigation Accuracy</strong>: 98%+ successful autonomous navigation
+<strong>Collision Rate</strong>: &lt;0.1% (very safe in human environment)
+<strong>Energy Efficiency</strong>: 500 Wh per 100 meters (battery provides 4-6 hours runtime)
+<strong>Throughput</strong>: 50-100 deliveries per shift (8 hours)</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="real-world-challenges-and-adaptations">Real-World Challenges and Adaptations<a href="#real-world-challenges-and-adaptations" class="hash-link" aria-label="Direct link to Real-World Challenges and Adaptations" title="Direct link to Real-World Challenges and Adaptations" translate="no">​</a></h3>
+<p><strong>Challenge 1: Map Drift</strong></p>
+<ul>
+<li class="">Problem: After days of operation, localization accumulates error</li>
+<li class="">Solution: Periodic loop-closure optimization; rebuild map weekly</li>
+<li class="">Result: Maintains accuracy over weeks of operation</li>
+</ul>
+<p><strong>Challenge 2: Dynamic Obstacles</strong></p>
+<ul>
+<li class="">Problem: Humans unexpectedly block planned path</li>
+<li class="">Solution: Real-time replanning; local obstacle avoidance</li>
+<li class="">Result: &lt;1% of navigations require human intervention</li>
+</ul>
+<p><strong>Challenge 3: Worn Floors</strong></p>
+<ul>
+<li class="">Problem: New markings or changed flooring affects features</li>
+<li class="">Solution: Domain adaptation; retrain perception on new conditions</li>
+<li class="">Result: Maintains performance across environment changes</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="walking-efficiency-study-humanoid-vs-human">Walking Efficiency Study: Humanoid vs. Human<a href="#walking-efficiency-study-humanoid-vs-human" class="hash-link" aria-label="Direct link to Walking Efficiency Study: Humanoid vs. Human" title="Direct link to Walking Efficiency Study: Humanoid vs. Human" translate="no">​</a></h2>
+<p>Biomechanics research compares humanoid and human walking efficiency.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="energy-consumption-comparison">Energy Consumption Comparison<a href="#energy-consumption-comparison" class="hash-link" aria-label="Direct link to Energy Consumption Comparison" title="Direct link to Energy Consumption Comparison" translate="no">​</a></h3>
+<p><strong>Human Walking</strong>:</p>
+<ul>
+<li class="">Speed: 1.4 m/s (comfortable pace)</li>
+<li class="">Energy cost: ~0.5 J/kg/meter (biological efficiency)</li>
+<li class="">For 70 kg person: ~35 J/meter</li>
+<li class="">Runtime: 8 hours, distance ~40 km</li>
+</ul>
+<p><strong>Current Humanoid</strong> (Atlas-class):</p>
+<ul>
+<li class="">Speed: 1.4 m/s</li>
+<li class="">Energy cost: ~20 J/kg/meter (10× less efficient)</li>
+<li class="">For 70 kg robot: ~1400 J/meter</li>
+<li class="">Runtime: 1 hour, distance ~3 km (with typical battery)</li>
+</ul>
+<p><strong>Gap Analysis</strong>:</p>
+<ul>
+<li class="">Humans: Optimized by evolution over millions of years</li>
+<li class="">Humanoids: ~30 years of development</li>
+<li class="">Root causes of inefficiency:<!-- -->
+<ul>
+<li class="">Electric motors: 60-80% efficient vs. biological muscles (50%+, but with better control)</li>
+<li class="">Control: Humanoid uses more precise but less efficient gaits</li>
+<li class="">Mechanical friction: Joints and gearboxes add losses</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="efficiency-improvements-through-learning">Efficiency Improvements Through Learning<a href="#efficiency-improvements-through-learning" class="hash-link" aria-label="Direct link to Efficiency Improvements Through Learning" title="Direct link to Efficiency Improvements Through Learning" translate="no">​</a></h3>
+<p><strong>Gait Optimization</strong> (machine learning approach):</p>
+<ol>
+<li class="">
+<p><strong>Baseline gait</strong>: Hand-designed trajectory (initial efficiency: 5 W·h/km)</p>
+</li>
+<li class="">
+<p><strong>Learned improvement</strong>: RL optimization in simulator</p>
+<ul>
+<li class="">Train policy to minimize: power + speed deviation from target</li>
+<li class="">Result: 4.2 W·h/km (16% improvement)</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Terrain adaptation</strong>: Learn gaits for different surfaces</p>
+<ul>
+<li class="">Soft terrain (grass, sand): Longer stride (energy saving)</li>
+<li class="">Hard terrain (concrete): Shorter stride (reduces impact)</li>
+<li class="">Result: 3.8 W·h/km average (24% improvement over baseline)</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Predictive optimization</strong>: Learn to anticipate terrain</p>
+<ul>
+<li class="">Vision system predicts surface type 1 meter ahead</li>
+<li class="">Pre-adjust gait before reaching terrain</li>
+<li class="">Result: 3.5 W·h/km (30% improvement)</li>
+</ul>
+</li>
+</ol>
+<p><strong>Impact</strong>: 30% efficiency gain → 3× longer runtime (1 hour → 3 hours)</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="obstacle-avoidance-in-crowded-environments">Obstacle Avoidance in Crowded Environments<a href="#obstacle-avoidance-in-crowded-environments" class="hash-link" aria-label="Direct link to Obstacle Avoidance in Crowded Environments" title="Direct link to Obstacle Avoidance in Crowded Environments" translate="no">​</a></h2>
+<p>Testing autonomous navigation in crowded spaces.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="scenario-robot-navigating-busy-hallway">Scenario: Robot navigating busy hallway<a href="#scenario-robot-navigating-busy-hallway" class="hash-link" aria-label="Direct link to Scenario: Robot navigating busy hallway" title="Direct link to Scenario: Robot navigating busy hallway" translate="no">​</a></h3>
+<p><strong>Environment</strong>:</p>
+<ul>
+<li class="">Hallway width: 2 meters</li>
+<li class="">Human density: 1 person per 2 m² (crowded but not packed)</li>
+<li class="">Human speeds: 0.5-1.5 m/s (variable)</li>
+<li class="">Visibility: Partially occluded (humans block view)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="robot-behavior">Robot Behavior<a href="#robot-behavior" class="hash-link" aria-label="Direct link to Robot Behavior" title="Direct link to Robot Behavior" translate="no">​</a></h3>
+<p><strong>Detection</strong> (LiDAR + vision):</p>
+<ol>
+<li class="">Detect all humans in hallway (depth cameras)</li>
+<li class="">Estimate their velocities (track over time)</li>
+<li class="">Predict their paths 1-2 seconds ahead</li>
+</ol>
+<p><strong>Decision Making</strong>:</p>
+<ul>
+<li class="">Humans ahead: Pause or slow down?</li>
+<li class="">Path clear: Navigate through gaps?</li>
+<li class="">Risk assessment: How likely is collision?</li>
+</ul>
+<p><strong>Execution</strong>:</p>
+<ul>
+<li class="">Dynamic Window Approach considers safety margins</li>
+<li class="">Comfortable safety distance: 0.5 meters</li>
+<li class="">If robot can&#x27;t maintain: Slower speed or full stop</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="success-metrics">Success Metrics<a href="#success-metrics" class="hash-link" aria-label="Direct link to Success Metrics" title="Direct link to Success Metrics" translate="no">​</a></h3>
+<p><strong>Collision Rate</strong>:</p>
+<ul>
+<li class="">Uncontrolled humanoid: 5-10% collisions in crowded hallway</li>
+<li class="">With DWA: 0.1% collisions (excellent safety)</li>
+</ul>
+<p><strong>Discomfort to Humans</strong>:</p>
+<ul>
+<li class="">Did humans have to stop or change path?</li>
+<li class="">Discomfort rate: ~5% (robot slowed or stopped, didn&#x27;t block)</li>
+</ul>
+<p><strong>Navigation Time</strong>:</p>
+<ul>
+<li class="">Clear hallway: 10 seconds (2 m/s speed)</li>
+<li class="">Crowded hallway: 25 seconds (0.8 m/s average)</li>
+<li class="">Overhead from crowd avoidance: 2.5× slowdown (acceptable)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="real-world-deployment">Real-World Deployment<a href="#real-world-deployment" class="hash-link" aria-label="Direct link to Real-World Deployment" title="Direct link to Real-World Deployment" translate="no">​</a></h3>
+<p>After initial testing, robot deployed in busy hospital hallway:</p>
+<ul>
+<li class=""><strong>Week 1</strong>: Several minor collisions, humans gave feedback</li>
+<li class=""><strong>Week 2-4</strong>: Behavior refined based on feedback</li>
+<li class=""><strong>After adaptation</strong>: Robot accepted by hospital staff, safe navigation achieved</li>
+</ul>
+<p><strong>Key learning</strong>: Robots must adapt to specific human environments, not just generic crowds</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/chapter6/practical_examples.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/chapter6/key_concepts"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Chapter 6: Motion and Navigation - Key Concepts</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/chapter6/diagrams"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 6: Motion and Navigation - Diagrams / Illustrations</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#boston-dynamics-atlas-parkour-on-uneven-terrain" class="table-of-contents__link toc-highlight">Boston Dynamics Atlas: Parkour on Uneven Terrain</a><ul><li><a href="#environment" class="table-of-contents__link toc-highlight">Environment</a></li><li><a href="#navigation-strategy" class="table-of-contents__link toc-highlight">Navigation Strategy</a></li><li><a href="#motion-execution" class="table-of-contents__link toc-highlight">Motion Execution</a></li><li><a href="#key-technical-achievements" class="table-of-contents__link toc-highlight">Key Technical Achievements</a></li></ul></li><li><a href="#fetch-robotics-autonomous-warehouse-navigation" class="table-of-contents__link toc-highlight">Fetch Robotics Autonomous Warehouse Navigation</a><ul><li><a href="#warehouse-environment" class="table-of-contents__link toc-highlight">Warehouse Environment</a></li><li><a href="#slam-for-warehouse-mapping" class="table-of-contents__link toc-highlight">SLAM for Warehouse Mapping</a></li><li><a href="#autonomous-navigation" class="table-of-contents__link toc-highlight">Autonomous Navigation</a></li><li><a href="#performance-metrics" class="table-of-contents__link toc-highlight">Performance Metrics</a></li><li><a href="#real-world-challenges-and-adaptations" class="table-of-contents__link toc-highlight">Real-World Challenges and Adaptations</a></li></ul></li><li><a href="#walking-efficiency-study-humanoid-vs-human" class="table-of-contents__link toc-highlight">Walking Efficiency Study: Humanoid vs. Human</a><ul><li><a href="#energy-consumption-comparison" class="table-of-contents__link toc-highlight">Energy Consumption Comparison</a></li><li><a href="#efficiency-improvements-through-learning" class="table-of-contents__link toc-highlight">Efficiency Improvements Through Learning</a></li></ul></li><li><a href="#obstacle-avoidance-in-crowded-environments" class="table-of-contents__link toc-highlight">Obstacle Avoidance in Crowded Environments</a><ul><li><a href="#scenario-robot-navigating-busy-hallway" class="table-of-contents__link toc-highlight">Scenario: Robot navigating busy hallway</a></li><li><a href="#robot-behavior" class="table-of-contents__link toc-highlight">Robot Behavior</a></li><li><a href="#success-metrics" class="table-of-contents__link toc-highlight">Success Metrics</a></li><li><a href="#real-world-deployment" class="table-of-contents__link toc-highlight">Real-World Deployment</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">📚 All Chapters</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/chapter1/summary">Chapter 1: Fundamentals</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter2/summary">Chapter 2: Humanoid Design</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter3/summary">Chapter 3: Sensors &amp; Actuators</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter4/summary">Chapter 4: Control Systems</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter5/summary">Chapter 5: AI Integration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter6/summary">Chapter 6: Motion &amp; Navigation</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">🎓 Learning Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/chapter1/key_concepts">Key Concepts</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter3/practical_examples">Practical Examples</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/chapter3/diagrams">Diagrams &amp; Visualizations</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">🚀 Community &amp; Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/itishakeem/physical-ai-humanoid-robotics-textbook" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub Repository<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/itishakeem/physical-ai-humanoid-robotics-textbook/issues" target="_blank" rel="noopener noreferrer" class="footer__link-item">Report Issues<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/itishakeem/physical-ai-humanoid-robotics-textbook/pulls" target="_blank" rel="noopener noreferrer" class="footer__link-item">Contribute<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">✍️ About</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Author: Abdul Hakeem</a></li><li class="footer__item"><a href="#" class="footer__link-item">Physical AI Research</a></li><li class="footer__item"><a href="#" class="footer__link-item">Embodied Intelligence</a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright"><strong>Copyright © 2025 Abdul Hakeem</strong> | All rights reserved | Built with <span style="color: #ff6b6b;">❤️</span> using Docusaurus | <a href="https://github.com/itishakeem/physical-ai-humanoid-robotics-textbook" target="_blank">View on GitHub</a></div></div></div></footer></div>
+</body>
+</html>
