@@ -9,3 +9,24 @@
   height: 200px;
   width: 200px;
 }
+
+.features .row {
+  perspective: 1000px;
+}
+
+.features .col {
+  perspective: 1000px;
+}
+
+.features .col > div {
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.features .col:hover > div {
+  transform: rotateY(10deg) scale(1.05);
+}
+
+.features .col:hover .feature-card {
+  transform: rotateY(10deg) scale(1.05);
+}
