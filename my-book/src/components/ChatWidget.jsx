@@ -1,11 +1,7 @@
 // src/components/ChatWidget.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from "@site/src/contexts/AuthContext";
-import { API_CONFIG } from "../config";
 import "./ChatWidget.css";
-
-const BACKEND_URL = API_CONFIG.BACKEND_URL;
-const API_BASE_URL = API_CONFIG.CHAT_HISTORY_URL;
 
 // Random welcome messages for non-logged-in users
 const RANDOM_WELCOME_MESSAGES = [
@@ -23,6 +19,8 @@ const getRandomWelcomeMessage = () => {
 
 export default function ChatWidget() {
   const { user, token, isAuthenticated } = useAuth();
+  const [backendUrl, setBackendUrl] = useState('http://127.0.0.1:8000/chat');
+  const [apiBaseUrl, setApiBaseUrl] = useState('http://127.0.0.1:8000/api/chat-history');
   const [open, setOpen] = useState(false);
   const [chats, setChats] = useState([]);
   const [currentChatId, setCurrentChatId] = useState(null);
@@ -36,6 +34,19 @@ export default function ChatWidget() {
   const [backendOnline, setBackendOnline] = useState(true);
   const bodyRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Set API URLs on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isProduction = window.location.hostname.includes('github.io');
+      const baseUrl = isProduction
+        ? 'https://physical-ai-humanoid-robotics-textbook-bgc0.onrender.com'
+        : 'http://127.0.0.1:8000';
+
+      setBackendUrl(`${baseUrl}/chat`);
+      setApiBaseUrl(`${baseUrl}/api/chat-history`);
+    }
+  }, []);
 
   // Set welcome message based on auth status
   useEffect(() => {
@@ -78,7 +89,7 @@ export default function ChatWidget() {
     if (!isAuthenticated) return;
 
     try {
-      const response = await fetch(`${API_BASE_URL}/chats`, {
+      const response = await fetch(`${apiBaseUrl}/chats`, {
         headers: getAuthHeaders()
       });
 
@@ -112,7 +123,7 @@ export default function ChatWidget() {
   const loadChatMessages = async (chatId) => {
     if (!isAuthenticated) return;
     try {
-      const response = await fetch(`${API_BASE_URL}/chats/${chatId}`, {
+      const response = await fetch(`${apiBaseUrl}/chats/${chatId}`, {
         headers: getAuthHeaders()
       });
       if (!response.ok) throw new Error("Failed to load messages");
@@ -149,7 +160,7 @@ export default function ChatWidget() {
     }
 
     try {
-      const response = await fetch(`${API_BASE_URL}/chats`, {
+      const response = await fetch(`${apiBaseUrl}/chats`, {
         method: "POST",
         headers: getAuthHeaders(),
         body: JSON.stringify({ title: "New Conversation" })
@@ -195,7 +206,7 @@ export default function ChatWidget() {
     if (!currentChatId || !isAuthenticated) return;
     if (window.confirm("Clear all messages in this chat? This cannot be undone.")) {
       try {
-        const response = await fetch(`${API_BASE_URL}/chats/${currentChatId}/clear`, {
+        const response = await fetch(`${apiBaseUrl}/chats/${currentChatId}/clear`, {
           method: "PUT",
           headers: getAuthHeaders()
         });
@@ -219,7 +230,7 @@ export default function ChatWidget() {
 
     // Delete in background
     try {
-      const response = await fetch(`${API_BASE_URL}/chats`, {
+      const response = await fetch(`${apiBaseUrl}/chats`, {
         method: "DELETE",
         headers: getAuthHeaders()
       });
@@ -262,7 +273,7 @@ export default function ChatWidget() {
     // If authenticated but no chat ID, create one first
     if (isAuthenticated && !currentChatId) {
       try {
-        const response = await fetch(`${API_BASE_URL}/chats`, {
+        const response = await fetch(`${apiBaseUrl}/chats`, {
           method: "POST",
           headers: getAuthHeaders(),
           body: JSON.stringify({ title: "New Conversation" })
@@ -311,7 +322,7 @@ export default function ChatWidget() {
     try {
       // Save user message to database (if authenticated and has chat ID) - non-blocking
       if (isAuthenticated && activeChatId) {
-        fetch(`${API_BASE_URL}/chats/${activeChatId}/messages`, {
+        fetch(`${apiBaseUrl}/chats/${activeChatId}/messages`, {
           method: "POST",
           headers: getAuthHeaders(),
           body: JSON.stringify({ role: "user", text: userText })
@@ -325,7 +336,7 @@ export default function ChatWidget() {
       }));
 
       // Get bot response via streaming (include user level and conversation history)
-      const res = await fetch(BACKEND_URL, {
+      const res = await fetch(backendUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -375,7 +386,7 @@ export default function ChatWidget() {
       // Save bot message to database after streaming completes (if authenticated)
       if (isAuthenticated && activeChatId) {
         // Save the message without blocking the UI
-        fetch(`${API_BASE_URL}/chats/${activeChatId}/messages`, {
+        fetch(`${apiBaseUrl}/chats/${activeChatId}/messages`, {
           method: "POST",
           headers: getAuthHeaders(),
           body: JSON.stringify({ role: "bot", text: botText })
@@ -432,7 +443,7 @@ export default function ChatWidget() {
 
       // Perform actual deletion in background
       try {
-        const response = await fetch(`${API_BASE_URL}/chats/${chatId}`, {
+        const response = await fetch(`${apiBaseUrl}/chats/${chatId}`, {
           method: "DELETE",
           headers: getAuthHeaders()
         });

@@ -3,16 +3,15 @@ import Layout from '@theme/Layout';
 import { useAuth } from '@site/src/contexts/AuthContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useHistory } from '@docusaurus/router';
-import { API_CONFIG } from '../config';
 import './auth.css';
-
-const API_BASE_URL = API_CONFIG.AUTH_URL;
 
 export default function VerifyOTP() {
   const { login } = useAuth();
   const history = useHistory();
   const baseUrl = useBaseUrl('');
   const signupUrl = useBaseUrl('/signup');
+
+  const [apiUrl, setApiUrl] = useState('http://127.0.0.1:8000/api/auth');
   const [otp, setOtp] = useState(['', '', '', '', '', '']);
   const [email, setEmail] = useState('');
   const [errors, setErrors] = useState({});
@@ -21,6 +20,17 @@ export default function VerifyOTP() {
   const [success, setSuccess] = useState(false);
   const [countdown, setCountdown] = useState(0);
   const inputRefs = useRef([]);
+
+  // Set API URL on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isProduction = window.location.hostname.includes('github.io');
+      setApiUrl(isProduction
+        ? 'https://physical-ai-humanoid-robotics-textbook-bgc0.onrender.com/api/auth'
+        : 'http://127.0.0.1:8000/api/auth'
+      );
+    }
+  }, []);
 
   useEffect(() => {
     // Get email from URL params or localStorage
@@ -91,9 +101,9 @@ export default function VerifyOTP() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const otpCode = otp.join('');
-    
+
     if (otpCode.length !== 6) {
       setErrors({ otp: 'Please enter the complete 6-digit code' });
       return;
@@ -102,8 +112,14 @@ export default function VerifyOTP() {
     setIsLoading(true);
     setErrors({});
 
+    // Get the correct API URL at submit time
+    const isProduction = typeof window !== 'undefined' && window.location.hostname.includes('github.io');
+    const currentApiUrl = isProduction
+      ? 'https://physical-ai-humanoid-robotics-textbook-bgc0.onrender.com/api/auth'
+      : 'http://127.0.0.1:8000/api/auth';
+
     try {
-      const response = await fetch(`${API_BASE_URL}/verify-otp`, {
+      const response = await fetch(`${currentApiUrl}/verify-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -145,12 +161,18 @@ export default function VerifyOTP() {
 
   const handleResend = async () => {
     if (countdown > 0) return;
-    
+
     setIsResending(true);
     setErrors({});
 
+    // Get the correct API URL at submit time
+    const isProduction = typeof window !== 'undefined' && window.location.hostname.includes('github.io');
+    const currentApiUrl = isProduction
+      ? 'https://physical-ai-humanoid-robotics-textbook-bgc0.onrender.com/api/auth'
+      : 'http://127.0.0.1:8000/api/auth';
+
     try {
-      const response = await fetch(`${API_BASE_URL}/resend-otp`, {
+      const response = await fetch(`${currentApiUrl}/resend-otp`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

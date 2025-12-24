@@ -1,25 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useHistory } from '@docusaurus/router';
 import { useAuth } from '@site/src/contexts/AuthContext';
-import { API_CONFIG } from '../config';
 import './auth.css';
-
-const API_BASE_URL = API_CONFIG.AUTH_URL;
 
 export default function Login() {
   const { login } = useAuth();
   const history = useHistory();
   const baseUrl = useBaseUrl('');
 
+  const [apiUrl, setApiUrl] = useState('http://127.0.0.1:8000/api/auth');
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+
+  // Set API URL on mount
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isProduction = window.location.hostname.includes('github.io');
+      setApiUrl(isProduction
+        ? 'https://physical-ai-humanoid-robotics-textbook-bgc0.onrender.com/api/auth'
+        : 'http://127.0.0.1:8000/api/auth'
+      );
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -34,8 +43,14 @@ export default function Login() {
     setIsLoading(true);
     setErrors({});
 
+    // Get the correct API URL at submit time
+    const isProduction = typeof window !== 'undefined' && window.location.hostname.includes('github.io');
+    const currentApiUrl = isProduction
+      ? 'https://physical-ai-humanoid-robotics-textbook-bgc0.onrender.com/api/auth'
+      : 'http://127.0.0.1:8000/api/auth';
+
     try {
-      const response = await fetch(`${API_BASE_URL}/login`, {
+      const response = await fetch(`${currentApiUrl}/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
