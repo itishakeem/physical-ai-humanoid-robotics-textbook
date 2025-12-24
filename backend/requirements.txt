@@ -6,7 +6,7 @@ sqlalchemy==2.0.23
 psycopg2-binary==2.9.9
 pydantic==2.5.0
 pydantic[email]==2.5.0
-qdrant-client==1.7.0
+qdrant-client==1.7.1
 tqdm==4.66.1
 python-jose[cryptography]==3.3.0
 bcrypt==4.1.1
