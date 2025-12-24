@@ -77,7 +77,7 @@ async def create_chat(chat: ChatCreate, db: Session = Depends(get_db), current_u
         welcome_msg = Message(
             chat_id=chat_id,
             role="bot",
-            text="Hey there! 👋 I'm your friendly AI guide for all things humanoid robotics and bipedal locomotion!\n\nI'd love to help you learn about:\n• Zero Moment Point (ZMP) and how robots keep their balance\n• Torque control & actuators (the robot's muscles!)\n• Balance recovery techniques\n• Amazing robots like Atlas, Figure 01, and Tesla Optimus\n• Reinforcement learning for walking\n\nWhat would you like to explore today? Feel free to ask me anything! 🤖",
+            text="Hi! 👋 I'm your AI guide for humanoid robotics. Ask me anything about robot balance, control systems, or specific robots like Atlas and Optimus!",
             created_at=datetime.utcnow()
         )
         db.add(welcome_msg)
@@ -237,7 +237,7 @@ async def clear_chat_messages(chat_id: str, db: Session = Depends(get_db), curre
         welcome_msg = Message(
             chat_id=chat_id,
             role="bot",
-            text="Hey there! 👋 I'm your friendly AI guide for all things humanoid robotics and bipedal locomotion!\n\nI'd love to help you learn about:\n• Zero Moment Point (ZMP) and how robots keep their balance\n• Torque control & actuators (the robot's muscles!)\n• Balance recovery techniques\n• Amazing robots like Atlas, Figure 01, and Tesla Optimus\n• Reinforcement learning for walking\n\nWhat would you like to explore today? Feel free to ask me anything! 🤖",
+            text="Hi! 👋 I'm your AI guide for humanoid robotics. Ask me anything about robot balance, control systems, or specific robots like Atlas and Optimus!",
             created_at=datetime.utcnow()
         )
         db.add(welcome_msg)
