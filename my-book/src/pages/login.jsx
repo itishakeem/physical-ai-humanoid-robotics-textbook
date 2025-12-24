@@ -9,7 +9,7 @@ import './auth.css';
 export default function Login() {
   const { login } = useAuth();
   const history = useHistory();
-  const baseUrl = useBaseUrl('');
+  const baseUrl = useBaseUrl('/');
 
   const [apiUrl, setApiUrl] = useState('http://127.0.0.1:8000/api/auth');
   const [formData, setFormData] = useState({
