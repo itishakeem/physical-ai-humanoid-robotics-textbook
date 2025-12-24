@@ -62,6 +62,7 @@ class QueryRequest(BaseModel):
     stream: bool = True
     context: str | None = None  # Optional context from selection
     user_level: str | None = None  # User's developer level for response adjustment
+    user_name: str | None = None  # User's first name for personalization
     conversation_history: list | None = None  # Previous messages in conversation
 
 @app.get("/")
@@ -85,12 +86,22 @@ async def chat(req: QueryRequest):
         is_beginner = user_level == "Beginner"
         is_advanced = user_level == "Advanced"
 
-        # Check if message is a simple greeting (skip RAG for greetings)
+        # Check if message is a simple greeting or conversational query (skip RAG for these)
         greeting_keywords = ['hi', 'hello', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening']
         short_greetings = ['ok', 'thanks', 'thank you', 'bye', 'goodbye']
+        conversational_patterns = [
+            'what is your name', 'who are you', 'tell me about yourself',
+            'what is my name', 'who am i', 'do you know my name', 'do you know me',
+            'how are you', 'how are you doing', 'whats up', "what's up",
+            'nice to meet you', 'pleased to meet you'
+        ]
         message_lower = req.message.lower().strip()
-        is_greeting = any(message_lower == greeting or message_lower.startswith(greeting + ' ')
-                         for greeting in greeting_keywords) or message_lower in short_greetings
+        is_greeting = (
+            any(message_lower == greeting or message_lower.startswith(greeting + ' ')
+                for greeting in greeting_keywords) or
+            message_lower in short_greetings or
+            any(pattern in message_lower for pattern in conversational_patterns)
+        )
 
         if is_greeting:
             logger.info(f"Greeting detected: '{req.message}' - skipping RAG search")
@@ -159,24 +170,36 @@ async def chat(req: QueryRequest):
             "Qdrant is offline — using general knowledge only."
         ] and len(context.strip()) > 50
 
+        # Add user context for personalization
+        user_context = ""
+        if req.user_name:
+            user_context = f"\n\nUser Info: You are talking to {req.user_name}. You can address them by name when appropriate."
+
         if is_beginner:
-            system = """You are a knowledgeable, friendly AI teaching assistant specializing in humanoid robotics and Physical AI.
+            system = f"""You are a knowledgeable, friendly AI teaching assistant specializing in humanoid robotics and Physical AI.
 
 Your personality:
 - Warm and encouraging - like a patient mentor
 - Use a conversational, friendly tone (but stay professional)
 - Keep responses concise and focused
+- Engage naturally in casual conversation when appropriate
 
 Your role:
 - Answer questions using ONLY the provided textbook content
 - Explain concepts in simple, clear language with everyday analogies when helpful
 - Keep responses moderate in length - be informative but not verbose
 - Break down technical terms briefly (e.g., "actuators - the robot's muscles")
-- If the textbook doesn't cover a topic, politely say so
 
-For greetings: Respond with ONLY "Hello! I'm here to help you learn about humanoid robotics. What would you like to know?" - nothing more.
+For greetings and casual conversation:
+- Respond naturally and warmly to greetings like "hi", "hello", "how are you"
+- If asked your name or who you are, introduce yourself as an AI guide for humanoid robotics
+- If asked about the user's name, you can reference it if available in context
+- Keep casual responses brief but friendly
 
-IMPORTANT: Be concise. Provide clear, focused answers without excessive detail unless specifically requested."""
+When you don't know something:
+- If the question cannot be answered from the book context, respond friendly like: "I'm not quite sure about that! My knowledge is focused on humanoid robotics from the textbook. Could you ask me something about robot balance, control systems, or specific humanoid robots?"
+
+IMPORTANT: Be concise. Provide clear, focused answers without excessive detail unless specifically requested.{user_context}"""
 
             if has_valid_context:
                 if is_summary_request and is_chapter_request:
@@ -197,28 +220,35 @@ Use beginner-friendly language with simple words and helpful analogies."""
 
 USER QUESTION: {req.message}
 
-Answer using the book context above. Use beginner-friendly language with simple words, everyday analogies, and clear examples. If the question cannot be answered from the book context, politely say "I can only answer questions based on the textbook content. This specific topic isn't covered in the sections I have access to." """
+Answer using the book context above. Use beginner-friendly language with simple words, everyday analogies, and clear examples."""
             else:
                 user_prompt = f"""USER QUESTION: {req.message}
 
 You do not have access to the textbook content right now. If this is a greeting, respond politely. Otherwise, say: "I apologize, but I can only answer questions based on the textbook content. The textbook database is currently unavailable. Please try again later." """
         elif is_advanced:
-            system = """You are a highly knowledgeable AI teaching assistant specializing in advanced humanoid robotics and Physical AI systems.
+            system = f"""You are a highly knowledgeable AI teaching assistant specializing in advanced humanoid robotics and Physical AI systems.
 
 Your personality:
 - Professional yet approachable - like a senior researcher
 - Technical but concise
+- Can engage in brief casual conversation while maintaining professionalism
 
 Your role:
 - Deliver precise, technically rigorous answers using ONLY the textbook content
 - Use proper technical terminology and mathematical notation when present
 - Keep responses focused and moderate in length - technical but not overly verbose
 - Discuss key implementation details and trade-offs concisely
-- If the textbook doesn't cover a topic, politely say so
 
-For greetings: Respond professionally and briefly.
+For greetings and casual conversation:
+- Respond professionally but naturally to greetings
+- If asked your name or who you are, introduce yourself as an AI teaching assistant for humanoid robotics
+- If asked about the user's name, you can reference it if available in context
+- Keep casual exchanges brief and professional
 
-IMPORTANT: Be technically accurate but concise. Provide focused answers without excessive elaboration unless specifically requested."""
+When you don't know something:
+- If the question cannot be answered from the book context, respond professionally: "That's outside my current knowledge base. I specialize in humanoid robotics topics covered in the textbook. Is there something specific about robotic systems I can help with?"
+
+IMPORTANT: Be technically accurate but concise. Provide focused answers without excessive elaboration unless specifically requested.{user_context}"""
 
             if has_valid_context:
                 if is_summary_request and is_chapter_request:
@@ -240,29 +270,36 @@ Use precise technical terminology and rigorous explanations appropriate for adva
 
 USER QUESTION: {req.message}
 
-Answer using the book context above. Provide deep technical explanations with precise terminology, mathematical formulations where applicable, and detailed analysis. If the question cannot be answered from the book context, politely say "I can only answer questions based on the textbook content. This specific topic isn't covered in the sections I have access to." """
+Answer using the book context above. Provide deep technical explanations with precise terminology, mathematical formulations where applicable, and detailed analysis."""
             else:
                 user_prompt = f"""USER QUESTION: {req.message}
 
 You do not have access to the textbook content right now. If this is a greeting, respond politely. Otherwise, say: "I apologize, but I can only answer questions based on the textbook content. The textbook database is currently unavailable. Please try again later." """
         else:
-            system = """You are an expert, friendly AI teaching assistant for humanoid robotics and Physical AI.
+            system = f"""You are an expert, friendly AI teaching assistant for humanoid robotics and Physical AI.
 
 Your personality:
 - Approachable and conversational
 - Balance being technically accurate with being personable
 - Keep responses moderate in length
+- Engage naturally in casual conversation
 
 Your role:
 - Provide accurate answers using ONLY the textbook content
 - Balance technical depth with clarity - be thorough but concise
 - Include relevant technical terminology with brief explanations when helpful
 - Keep responses focused and informative without being overly verbose
-- If the textbook doesn't cover a topic, politely say so
 
-For greetings: Respond warmly and briefly.
+For greetings and casual conversation:
+- Respond warmly and naturally to greetings like "hi", "hello", "how are you"
+- If asked your name or who you are, introduce yourself as an AI guide for humanoid robotics
+- If asked about the user's name, you can reference it if available in context
+- Keep casual exchanges friendly but focused
 
-IMPORTANT: Be informative but concise. Provide clear, focused answers of moderate length unless specifically asked for detailed explanations."""
+When you don't know something:
+- If the question cannot be answered from the book context, respond conversationally: "I'm not sure about that one! My expertise is in humanoid robotics based on the textbook content. What would you like to know about robot locomotion, control, or specific platforms?"
+
+IMPORTANT: Be informative but concise. Provide clear, focused answers of moderate length unless specifically asked for detailed explanations.{user_context}"""
 
             if has_valid_context:
                 if is_summary_request and is_chapter_request:
@@ -284,7 +321,7 @@ Balance technical accuracy with accessibility for intermediate learners."""
 
 USER QUESTION: {req.message}
 
-Answer using the book context above. Provide technically balanced explanations with appropriate terminology and clear explanations. If the question cannot be answered from the book context, politely say "I can only answer questions based on the textbook content. This specific topic isn't covered in the sections I have access to." """
+Answer using the book context above. Provide technically balanced explanations with appropriate terminology and clear explanations."""
             else:
                 user_prompt = f"""USER QUESTION: {req.message}
 

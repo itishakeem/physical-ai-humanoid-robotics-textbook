@@ -335,7 +335,7 @@ export default function ChatWidget() {
         content: msg.text
       }));
 
-      // Get bot response via streaming (include user level and conversation history)
+      // Get bot response via streaming (include user level, name, and conversation history)
       const res = await fetch(backendUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -343,6 +343,7 @@ export default function ChatWidget() {
           message: userText,
           stream: true,
           user_level: isAuthenticated && user ? user.developer_level : "Intermediate",
+          user_name: isAuthenticated && user ? user.first_name : null,
           conversation_history: conversationHistory
         })
       });
