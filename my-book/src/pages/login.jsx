@@ -4,9 +4,10 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import { useHistory } from '@docusaurus/router';
 import { useAuth } from '@site/src/contexts/AuthContext';
+import { API_CONFIG } from '../config';
 import './auth.css';
 
-const API_BASE_URL = "http://127.0.0.1:8000/api/auth";
+const API_BASE_URL = API_CONFIG.AUTH_URL;
 
 export default function Login() {
   const { login } = useAuth();

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import { useHistory } from '@docusaurus/router';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import { API_CONFIG } from '../config';
 import './profile.css';
 
-const API_BASE_URL = "http://127.0.0.1:8000/api/auth";
+const API_BASE_URL = API_CONFIG.AUTH_URL;
 
 export default function Profile() {
   const history = useHistory();
