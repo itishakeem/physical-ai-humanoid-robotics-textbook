@@ -6,27 +6,95 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #1e40af;
-  --ifm-color-primary-dark: #1e3a8a;
-  --ifm-color-primary-darker: #1e3a8a;
-  --ifm-color-primary-darkest: #172554;
-  --ifm-color-primary-light: #3b82f6;
-  --ifm-color-primary-lighter: #60a5fa;
-  --ifm-color-primary-lightest: #93c5fd;
+  /* Light Mode - Purple & Pink Palette */
+  --ifm-color-primary: #7c3aed;
+  --ifm-color-primary-dark: #6d28d9;
+  --ifm-color-primary-darker: #5b21b6;
+  --ifm-color-primary-darkest: #4c1d95;
+  --ifm-color-primary-light: #8b5cf6;
+  --ifm-color-primary-lighter: #a78bfa;
+  --ifm-color-primary-lightest: #c4b5fd;
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: rgba(124, 58, 237, 0.1);
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f8fafc;
+  --ifm-heading-color: #1e293b;
+  --ifm-font-color-base: #475569;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #3b82f6;
-  --ifm-color-primary-dark: #2563eb;
-  --ifm-color-primary-darker: #1d4ed8;
-  --ifm-color-primary-darkest: #1e40af;
-  --ifm-color-primary-light: #60a5fa;
-  --ifm-color-primary-lighter: #93c5fd;
-  --ifm-color-primary-lightest: #dbeafe;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  /* Dark Mode - Lighter Purple & Indigo Palette */
+  --ifm-color-primary: #8b5cf6;
+  --ifm-color-primary-dark: #7c3aed;
+  --ifm-color-primary-darker: #6d28d9;
+  --ifm-color-primary-darkest: #5b21b6;
+  --ifm-color-primary-light: #a78bfa;
+  --ifm-color-primary-lighter: #c4b5fd;
+  --ifm-color-primary-lightest: #ddd6fe;
+  --docusaurus-highlighted-code-line-bg: rgba(139, 92, 246, 0.2);
+  --ifm-background-color: #0f172a;
+  --ifm-background-surface-color: #1e293b;
+  --ifm-heading-color: #e2e8f0;
+  --ifm-font-color-base: #cbd5e1;
+}
+
+/* ==================== ENHANCED COLOR STYLES ==================== */
+
+/* Improved text readability */
+.markdown > h1,
+.markdown > h2,
+.markdown > h3 {
+  color: var(--ifm-heading-color);
+}
+
+[data-theme='light'] .markdown > h1,
+[data-theme='light'] .markdown > h2 {
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme='dark'] .markdown > h1,
+[data-theme='dark'] .markdown > h2 {
+  background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Enhanced navbar */
+.navbar {
+  background: var(--ifm-navbar-background-color);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.1);
+}
+
+[data-theme='dark'] .navbar {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom-color: rgba(139, 92, 246, 0.2);
+}
+
+[data-theme='light'] .navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom-color: rgba(124, 58, 237, 0.15);
+}
+
+/* Sidebar enhancements */
+[data-theme='dark'] .menu__link {
+  color: #cbd5e1;
+}
+
+[data-theme='dark'] .menu__link--active {
+  color: #c4b5fd;
+  background-color: rgba(139, 92, 246, 0.15);
+}
+
+[data-theme='light'] .menu__link--active {
+  color: #6d28d9;
+  background-color: rgba(124, 58, 237, 0.08);
 }
 
 /* ==================== ANIMATIONS ==================== */
@@ -152,7 +220,16 @@ main {
   color: white;
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
-  animation: glow 2s ease-in-out infinite;
+}
+
+[data-theme='dark'] .markdown code {
+  background-color: rgba(139, 92, 246, 0.3);
+  color: #e0e7ff;
+}
+
+[data-theme='light'] .markdown code {
+  background-color: rgba(124, 58, 237, 0.15);
+  color: #5b21b6;
 }
 
 .markdown pre {
@@ -176,9 +253,18 @@ main {
 .markdown blockquote {
   animation: slideInRight 0.6s ease-out;
   border-left: 4px solid var(--ifm-color-primary);
-  background-color: rgba(30, 64, 175, 0.1);
   padding: 1rem;
   border-radius: 4px;
+}
+
+[data-theme='dark'] .markdown blockquote {
+  background-color: rgba(139, 92, 246, 0.1);
+  border-left-color: #8b5cf6;
+}
+
+[data-theme='light'] .markdown blockquote {
+  background-color: rgba(124, 58, 237, 0.05);
+  border-left-color: #7c3aed;
 }
 
 .markdown table {
@@ -199,8 +285,13 @@ main {
   border-bottom: 1px solid #ddd;
 }
 
-.markdown table tr:hover {
-  background-color: rgba(30, 64, 175, 0.05);
+[data-theme='dark'] .markdown table tr:hover {
+  background-color: rgba(139, 92, 246, 0.08);
+  transition: background-color 0.3s ease;
+}
+
+[data-theme='light'] .markdown table tr:hover {
+  background-color: rgba(124, 58, 237, 0.05);
   transition: background-color 0.3s ease;
 }
 
@@ -241,7 +332,16 @@ button, a.button {
 
 button:hover, a.button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+
+[data-theme='dark'] button:hover,
+[data-theme='dark'] a.button:hover {
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+}
+
+[data-theme='light'] button:hover,
+[data-theme='light'] a.button:hover {
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
 }
 
 /* Card animations */
@@ -276,24 +376,44 @@ button:hover, a.button:hover {
   padding: 1rem;
 }
 
-.admonition.admonition-note {
-  border-left-color: #2563eb;
-  background-color: rgba(37, 99, 235, 0.1);
+[data-theme='dark'] .admonition.admonition-note {
+  border-left-color: #6366f1;
+  background-color: rgba(99, 102, 241, 0.1);
 }
 
-.admonition.admonition-tip {
-  border-left-color: #16a34a;
-  background-color: rgba(22, 163, 74, 0.1);
+[data-theme='light'] .admonition.admonition-note {
+  border-left-color: #6366f1;
+  background-color: rgba(99, 102, 241, 0.08);
 }
 
-.admonition.admonition-warning {
-  border-left-color: #ea580c;
-  background-color: rgba(234, 88, 12, 0.1);
+[data-theme='dark'] .admonition.admonition-tip {
+  border-left-color: #10b981;
+  background-color: rgba(16, 185, 129, 0.1);
 }
 
-.admonition.admonition-danger {
+[data-theme='light'] .admonition.admonition-tip {
+  border-left-color: #059669;
+  background-color: rgba(5, 150, 105, 0.08);
+}
+
+[data-theme='dark'] .admonition.admonition-warning {
+  border-left-color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.1);
+}
+
+[data-theme='light'] .admonition.admonition-warning {
+  border-left-color: #f59e0b;
+  background-color: rgba(245, 158, 11, 0.08);
+}
+
+[data-theme='dark'] .admonition.admonition-danger {
+  border-left-color: #ef4444;
+  background-color: rgba(239, 68, 68, 0.1);
+}
+
+[data-theme='light'] .admonition.admonition-danger {
   border-left-color: #dc2626;
-  background-color: rgba(220, 38, 38, 0.1);
+  background-color: rgba(220, 38, 38, 0.08);
 }
 
 /* Docusaurus specific animations */

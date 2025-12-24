@@ -23,7 +23,8 @@ const config = {
   url: 'https://physical-ai-robotics.example.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/physical-ai-humanoid-robotics-textbook/',
+  // For local development, use '/' - For production, use '/physical-ai-humanoid-robotics-textbook/'
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -83,12 +84,26 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Physical AI & Humanoid Robotics',
-        logo: {
-          alt: 'Robotics Textbook',
-          src: 'img/logo.svg',
-        },
+        title: 'Home',
         items: [
+          {
+            to: '/',
+            label: '🏠 Home',
+            position: 'left',
+            className: 'navbar-mobile-only',
+          },
+          {
+            to: '/about',
+            label: 'ℹ️ About Us',
+            position: 'left',
+            className: 'navbar-mobile-only',
+          },
+          {
+            to: '/contact',
+            label: '📧 Contact Us',
+            position: 'left',
+            className: 'navbar-mobile-only',
+          },
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',

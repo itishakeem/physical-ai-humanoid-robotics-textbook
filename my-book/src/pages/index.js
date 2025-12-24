@@ -18,14 +18,13 @@ function HomepageHeader() {
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className={styles.buttons}>
           <Link
-            className="button button--secondary button--lg"
+            className={`button button--secondary button--lg ${styles.button}`}
             to="/docs/intro">
             📖 Start Reading
           </Link>
           <Link
-            className="button button--info button--lg"
-            to="/docs/chapter1/summary"
-            style={{marginLeft: '10px'}}>
+            className={`button button--info button--lg ${styles.button}`}
+            to="/docs/chapter1/summary">
             🚀 Go to Chapter 1
           </Link>
         </div>
