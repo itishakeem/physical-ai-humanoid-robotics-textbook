@@ -1,10 +1,11 @@
 // src/components/ChatWidget.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { useAuth } from "@site/src/contexts/AuthContext";
+import { API_CONFIG } from "../config";
 import "./ChatWidget.css";
 
-const BACKEND_URL = "http://127.0.0.1:8000/chat";
-const API_BASE_URL = "http://127.0.0.1:8000/api/chat-history";
+const BACKEND_URL = API_CONFIG.BACKEND_URL;
+const API_BASE_URL = API_CONFIG.CHAT_HISTORY_URL;
 
 // Random welcome messages for non-logged-in users
 const RANDOM_WELCOME_MESSAGES = [

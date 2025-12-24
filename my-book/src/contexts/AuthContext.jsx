@@ -1,9 +1,10 @@
 // AuthContext.jsx - Authentication state management
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { API_CONFIG } from '../config';
 
 const AuthContext = createContext(null);
 
-const API_BASE_URL = "http://127.0.0.1:8000/api/auth";
+const API_BASE_URL = API_CONFIG.AUTH_URL;
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
