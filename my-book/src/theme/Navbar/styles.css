@@ -314,26 +314,26 @@
   }
 
   .navbar__item.navbar-mobile-only {
-    padding: 4px 8px;
-    margin: 0 2px;
-    border-radius: 5px;
+    padding: 3px 6px;
+    margin: 0 1px;
+    border-radius: 4px;
     background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
     color: white !important;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 1px 3px rgba(139, 92, 246, 0.3);
   }
 
   .navbar__item.navbar-mobile-only:hover {
     background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
-    box-shadow: 0 3px 8px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 2px 6px rgba(139, 92, 246, 0.5);
     transform: translateY(-1px);
   }
 
   .navbar__link.navbar-mobile-only {
     color: white !important;
-    font-size: 10px;
+    font-size: 9px;
   }
 }
 
@@ -646,5 +646,33 @@
     width: 40px;
     height: 40px;
     font-size: 18px;
+  }
+
+  .navbar__item.navbar-mobile-only {
+    padding: 2px 5px;
+    margin: 0 1px;
+    font-size: 8px;
+  }
+
+  .navbar__link.navbar-mobile-only {
+    font-size: 8px;
+  }
+
+  /* Add more padding from back button on small screens */
+  .navbar__items {
+    padding-left: 55px !important;
+  }
+}
+
+/* Extra small screens - even smaller buttons */
+@media (max-width: 360px) {
+  .navbar__item.navbar-mobile-only {
+    padding: 2px 4px;
+    margin: 0;
+    font-size: 7px;
+  }
+
+  .navbar__link.navbar-mobile-only {
+    font-size: 7px;
   }
 }

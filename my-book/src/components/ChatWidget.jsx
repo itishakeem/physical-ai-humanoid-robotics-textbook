@@ -144,10 +144,18 @@ export default function ChatWidget() {
     }
   }, [currentMessages]);
 
-  // Auto-focus input when chat opens
+  // Auto-focus input when chat opens and show welcome message
   useEffect(() => {
     if (open && inputRef.current) {
       setTimeout(() => inputRef.current.focus(), 100);
+    }
+
+    // Show welcome message when opening with no messages
+    if (open && currentMessages.length === 0 && !currentChatId) {
+      // For authenticated users, create a new chat which will show the backend welcome message
+      if (isAuthenticated) {
+        startNewChat();
+      }
     }
   }, [open]);
 
