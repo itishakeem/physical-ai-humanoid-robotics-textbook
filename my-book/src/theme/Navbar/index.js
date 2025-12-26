@@ -203,11 +203,81 @@ function MobileToggleMenu() {
   );
 }
 
+function DesktopViewToggle() {
+  const [isDesktopView, setIsDesktopView] = React.useState(false);
+
+  React.useEffect(() => {
+    // Check if user previously enabled desktop view
+    const savedView = localStorage.getItem('desktop_view_enabled');
+    if (savedView === 'true') {
+      setIsDesktopView(true);
+      enableDesktopView();
+    }
+  }, []);
+
+  const enableDesktopView = () => {
+    // Change viewport to desktop width
+    const viewport = document.querySelector('meta[name=viewport]');
+    if (viewport) {
+      viewport.setAttribute('content', 'width=1200, initial-scale=0.5, maximum-scale=2.0, user-scalable=yes');
+    }
+  };
+
+  const enableMobileView = () => {
+    // Reset viewport to mobile responsive
+    const viewport = document.querySelector('meta[name=viewport]');
+    if (viewport) {
+      viewport.setAttribute('content', 'width=device-width, initial-scale=1.0');
+    }
+  };
+
+  const toggleView = () => {
+    const newState = !isDesktopView;
+    setIsDesktopView(newState);
+    localStorage.setItem('desktop_view_enabled', newState.toString());
+
+    if (newState) {
+      enableDesktopView();
+    } else {
+      enableMobileView();
+    }
+
+    // Reload to apply changes properly
+    setTimeout(() => window.location.reload(), 100);
+  };
+
+  // Only show on mobile devices
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (!isMobile) return null;
+
+  return (
+    <button
+      className="desktop-view-toggle"
+      onClick={toggleView}
+      title={isDesktopView ? "Switch to Mobile View" : "Switch to Desktop View"}
+      aria-label={isDesktopView ? "Switch to Mobile View" : "Switch to Desktop View"}
+    >
+      {isDesktopView ? '📱' : '💻'}
+    </button>
+  );
+}
+
 export default function Navbar(props) {
   return (
     <>
       <OriginalNavbar {...props} />
       <BackButton />
+      <DesktopViewToggle />
       <div className="navbar__auth-container">
         <AuthButtons />
       </div>

@@ -256,6 +256,42 @@
   display: none !important;
 }
 
+/* Desktop View Toggle Button */
+.desktop-view-toggle {
+  display: none;
+  position: fixed;
+  bottom: 90px;
+  right: 12px;
+  z-index: 9998;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #10b981 0%, #34d399 50%, #059669 100%);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4), 0 0 20px rgba(52, 211, 153, 0.3);
+  color: white;
+  font-size: 24px;
+}
+
+.desktop-view-toggle:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6), 0 0 30px rgba(52, 211, 153, 0.5);
+}
+
+.desktop-view-toggle:active {
+  transform: translateY(0) scale(0.98);
+}
+
+@media (max-width: 768px) {
+  .desktop-view-toggle {
+    display: flex !important;
+  }
+}
+
 /* Back button styles */
 .navbar-back-button {
   display: none;
@@ -314,26 +350,26 @@
   }
 
   .navbar__item.navbar-mobile-only {
-    padding: 3px 6px;
-    margin: 0 1px;
-    border-radius: 4px;
+    padding: 6px 12px;
+    margin: 0 3px;
+    border-radius: 6px;
     background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
     color: white !important;
-    font-size: 9px;
+    font-size: 12px;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(139, 92, 246, 0.3);
+    box-shadow: 0 2px 6px rgba(139, 92, 246, 0.4);
   }
 
   .navbar__item.navbar-mobile-only:hover {
     background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
-    box-shadow: 0 2px 6px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 3px 10px rgba(139, 92, 246, 0.6);
     transform: translateY(-1px);
   }
 
   .navbar__link.navbar-mobile-only {
     color: white !important;
-    font-size: 9px;
+    font-size: 12px;
   }
 }
 
@@ -649,13 +685,13 @@
   }
 
   .navbar__item.navbar-mobile-only {
-    padding: 2px 5px;
-    margin: 0 1px;
-    font-size: 8px;
+    padding: 5px 10px;
+    margin: 0 2px;
+    font-size: 11px;
   }
 
   .navbar__link.navbar-mobile-only {
-    font-size: 8px;
+    font-size: 11px;
   }
 
   /* Add more padding from back button on small screens */
@@ -664,15 +700,15 @@
   }
 }
 
-/* Extra small screens - even smaller buttons */
+/* Extra small screens - keep readable */
 @media (max-width: 360px) {
   .navbar__item.navbar-mobile-only {
-    padding: 2px 4px;
-    margin: 0;
-    font-size: 7px;
+    padding: 4px 8px;
+    margin: 0 1px;
+    font-size: 10px;
   }
 
   .navbar__link.navbar-mobile-only {
-    font-size: 7px;
+    font-size: 10px;
   }
 }
