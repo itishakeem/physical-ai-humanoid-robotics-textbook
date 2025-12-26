@@ -314,12 +314,12 @@
   }
 
   .navbar__item.navbar-mobile-only {
-    padding: 0.2em 0.3em;
-    margin: 0 0.1em;
+    padding: 0.15em 0.25em;
+    margin: 0 0.05em;
     border-radius: 0;
     background: transparent;
     color: var(--ifm-navbar-link-color) !important;
-    font-size: clamp(8px, 2vw, 12px);
+    font-size: clamp(7px, 1.8vw, 11px);
     font-weight: 600;
     transition: all 0.2s ease;
     box-shadow: none;
