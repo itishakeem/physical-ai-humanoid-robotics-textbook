@@ -4,26 +4,6 @@ import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import './styles.css';
 
-function BackButton() {
-  const handleBack = () => {
-    if (window.history.length > 1) {
-      window.history.back();
-    } else {
-      window.location.href = '/';
-    }
-  };
-
-  return (
-    <button
-      className="navbar-back-button"
-      onClick={handleBack}
-      aria-label="Go back"
-    >
-      ←
-    </button>
-  );
-}
-
 function AuthButtons() {
   const [user, setUser] = React.useState(null);
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -207,7 +187,6 @@ export default function Navbar(props) {
   return (
     <>
       <OriginalNavbar {...props} />
-      <BackButton />
       <div className="navbar__auth-container">
         <AuthButtons />
       </div>
